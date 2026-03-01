@@ -1,0 +1,658 @@
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [10.103 seconds] - 2026-02-28T13:14:12.227Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: DataTableComponent is not used within the template of UsersComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/admin/users/users.component.ts:14:41:
+[37m      14 │ ...onModule, FormsModule, [32mDataTableComponent[37m, PaginationComponent,...
+         ╵                           [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: DataTableComponent is not used within the template of AgentPoliciesComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-policies/agent-policies.component.ts:14:41:
+[37m      14 │ ...onModule, FormsModule, [32mDataTableComponent[37m, PaginationComponent,...
+         ╵                           [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: DataTableComponent is not used within the template of ClaimsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:15:41:
+[37m      15 │ ...onModule, FormsModule, [32mDataTableComponent[37m, BadgeComponent, Aler...
+         ╵                           [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: DataTableComponent is not used within the template of CustomerDashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/customer-dashboard/customer-dashboard.component.ts:12:61:
+[37m      12 │ ...ommonModule, RouterModule, StatCardComponent, [32mDataTableComponent[37m],
+         ╵                                                  [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: DataTableComponent is not used within the template of OfficerClaimsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/officer/claims/claims.component.ts:15:39:
+[37m      15 │ ...onModule, FormsModule, [32mDataTableComponent[37m, PaginationComponent,...
+         ╵                           [32m~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './features/auth/unauthorized/unauthorized.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:9:56:
+[37m      9 │ ... => import([32m'./features/auth/unauthorized/unauthorized.component'[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './features/customer/customer-policies/customer-policies.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:32:60:
+[37m      32 │ ...=> import([32m'./features/customer/customer-policies/customer-polic[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './features/customer/customer-claims/customer-claims.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:34:58:
+[37m      34 │ ...=> import([32m'./features/customer/customer-claims/customer-claims.[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './features/agent/commissions/commissions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:47:63:
+[37m      47 │ ...=> import([32m'./features/agent/commissions/commissions.component'[37m)...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './features/officer/officer-claims/officer-claims.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.routes.ts:58:58:
+[37m      58 │ ...=> import([32m'./features/officer/officer-claims/officer-claims.com[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'commissionThisMonth' does not exist on type 'CommissionSummaryDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-commissions/agent-commissions.component.ts:29:64:
+[37m      29 │ ..." [value]="'₹' + (su[32mm.commissionThisMon[37mth.toLocaleString('en-...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'getAgentCommissions' does not exist on type 'CommissionService'. Did you mean 'getCommissions'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-commissions/agent-commissions.component.ts:120:31:
+[37m      120 │ ...his.commissionService.[32mgetAgentCommissions[37m(page, this.pageSize(...
+          ╵                          [32m~~~~~~~~~~~~~~~~~~~[0m
+
+  'getCommissions' is declared here.
+
+    src/app/core/services/commission.service.ts:15:4:
+[37m      15 │     [32mgetCommissions[37m(page: number, pageSize: number): Observable<Api...
+         ╵     [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'res' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-commissions/agent-commissions.component.ts:121:19:
+[37m      121 │             next: ([32mres[37m) => {
+          ╵                    [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'commissionEarned' does not exist on type 'CommissionDto'. Did you mean 'commissionId'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-commissions/agent-commissions.component.ts:136:47:
+[37m      136 │ ...rnedFormatted: '₹' + [32mc.commissionEarn[37med.toLocaleString('en-I...
+          ╵                         [32m~~~~~~~~~~~~~~~~[0m
+
+  'commissionId' is declared here.
+
+    src/app/core/models/commission.model.ts:2:4:
+[37m      2 │     [32mcommissionId[37m: number | string;
+        ╵     [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'earnedDate' does not exist on type 'CommissionDto'. Did you mean 'earnedAt'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-commissions/agent-commissions.component.ts:139:33:
+[37m      139 │             }).format(new Date(c.[32mearnedDate[37m))
+          ╵                                  [32m~~~~~~~~~~[0m
+
+  'earnedAt' is declared here.
+
+    src/app/core/models/commission.model.ts:13:4:
+[37m      13 │     [32mearnedAt[37m: string | Date;
+         ╵     [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'commissionThisMonth' does not exist on type 'CommissionSummaryDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-dashboard/agent-dashboard.component.ts:24:64:
+[37m      24 │ ..." [value]="'₹' + (su[32mm.commissionThisMon[37mth.toLocaleString('en-...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'recentCommissions' does not exist on type 'CommissionSummaryDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-dashboard/agent-dashboard.component.ts:89:29:
+[37m      89 │         if (!this.summary()?.[32mrecentCommissions[37m) return [];
+         ╵                              [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'recentCommissions' does not exist on type 'CommissionSummaryDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-dashboard/agent-dashboard.component.ts:92:31:
+[37m      92 │         return this.summary()!.[32mrecentCommissions[37m.map(c => ({
+         ╵                                [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'c' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-dashboard/agent-dashboard.component.ts:92:53:
+[37m      92 │         return this.summary()!.recentCommissions.map([32mc[37m => ({
+         ╵                                                      [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-policies/agent-policies.component.ts:60:71:
+[37m      60 │ ...ies()" (click)="selectPolicy(p.[32mid[37m)" class="hover:bg-gray-50 cur...
+         ╵                                   [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'planTier' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-policies/agent-policies.component.ts:64:62:
+[37m      64 │ ...     <div class="font-medium text-gray-900">{{ p.[32mplanTier[37m }}</div>
+         ╵                                                     [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 4.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/agent/agent-policies/agent-policies.component.ts:204:45:
+[37m      204 │ ...ce.getPolicies(page, [32mthis.pageSize(), status, search[37m).subscribe({
+          ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'totalPending' does not exist on type 'BillingDashboardDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:32:62:
+[37m      32 │ ...ing" [value]="'₹' + (das[32mh.totalPendi[37mng | number:'1.0-0')" col...
+         ╵                            [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'totalOverdue' does not exist on type 'BillingDashboardDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:33:62:
+[37m      33 │ ...due" [value]="'₹' + (das[32mh.totalOverd[37mue | number:'1.0-0')" col...
+         ╵                            [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string | null' is not assignable to type 'string | number'.
+  Type 'null' is not assignable to type 'string | number'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:36:13:
+[37m      36 │             [[32mvalue[37m]="dash.nextDueDate ? (dash.nextDueDate | date:'...
+         ╵              [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:37:24:
+[37m      37 │             [subtitle]="[32mdash.nextDueAmount > 0[37m ? '₹' + (dash.nex...
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:49:64:
+[37m      49 │ ...et p of policies()" [value]="p.[32mid[37m">{{ p.policyNumber }} ({{ p.i...
+         ╵                                   [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:49:64:
+[37m      49 │ ...et p of policies()" [value]="p.[32mid[37m">{{ p.policyNumber }} ({{ p.i...
+         ╵                                   [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'getCustomerBillingDashboard' does not exist on type 'BillingService'. Did you mean 'getBillingDashboard'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:235:28:
+[37m      235 │ ...is.billingService.[32mgetCustomerBillingDashboard[37m().subscribe(res ...
+          ╵                      [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  'getBillingDashboard' is declared here.
+
+    src/app/core/services/billing.service.ts:30:4:
+[37m      30 │     [32mgetBillingDashboard[37m(): Observable<ApiResponse<BillingDashboard...
+         ╵     [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'res' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:235:68:
+[37m      235 │ ...s.billingService.getCustomerBillingDashboard().subscribe([32mres[37m => {
+          ╵                                                             [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 2.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:241:42:
+[37m      241 │         this.policyService.getPolicies(1, [32m50[37m).subscribe(res => {
+          ╵                                           [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getMyInvoices' does not exist on type 'BillingService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:253:32:
+[37m      253 │             this.billingService.[32mgetMyInvoices[37m().subscribe(res => {
+          ╵                                 [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'res' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:253:58:
+[37m      253 │             this.billingService.getMyInvoices().subscribe([32mres[37m => {
+          ╵                                                           [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'InvoiceDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:269:39:
+[37m      269 │         this.payForm.invoiceId.set(inv.[32mid[37m);
+          ╵                                        [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'processPayment' does not exist on type 'BillingService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:280:28:
+[37m      280 │         this.billingService.[32mprocessPayment[37m({
+          ╵                             [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'res' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:286:19:
+[37m      286 │             next: ([32mres[37m) => {
+          ╵                    [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'getCustomerBillingDashboard' does not exist on type 'BillingService'. Did you mean 'getBillingDashboard'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:292:40:
+[37m      292 │ ...is.billingService.[32mgetCustomerBillingDashboard[37m().subscribe(d =>...
+          ╵                      [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  'getBillingDashboard' is declared here.
+
+    src/app/core/services/billing.service.ts:30:4:
+[37m      30 │     [32mgetBillingDashboard[37m(): Observable<ApiResponse<BillingDashboard...
+         ╵     [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'd' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:292:80:
+[37m      292 │ ...erBillingDashboard().subscribe([32md[37m => { if (d.success) this.dash...
+          ╵                                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2353: Object literal may only specify known properties, and 'invoiceId' does not exist in type 'GenerateEmiRequest'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:307:12:
+[37m      307 │             [32minvoiceId[37m: eligibleInvoice.id,
+          ╵             [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'InvoiceDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/billing/billing.component.ts:307:39:
+[37m      307 │             invoiceId: eligibleInvoice.[32mid[37m,
+          ╵                                        [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'updateProfile' does not exist on type 'BusinessProfileService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/business-profile/business-profile.component.ts:210:42:
+[37m      210 │             ? this.businessProfileService.[32mupdateProfile[37m(dto)
+          ╵                                           [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'createProfile' does not exist on type 'BusinessProfileService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/business-profile/business-profile.component.ts:211:42:
+[37m      211 │             : this.businessProfileService.[32mcreateProfile[37m(dto);
+          ╵                                           [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'res' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/business-profile/business-profile.component.ts:214:19:
+[37m      214 │             next: ([32mres[37m) => {
+          ╵                    [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'err' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/business-profile/business-profile.component.ts:224:20:
+[37m      224 │             error: ([32merr[37m) => {
+          ╵                     [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:86:64:
+[37m      86 │ ...et p of policies()" [value]="p.[32mid[37m">{{ p.policyNumber }} ({{ p.i...
+         ╵                                   [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:86:64:
+[37m      86 │ ...et p of policies()" [value]="p.[32mid[37m">{{ p.policyNumber }} ({{ p.i...
+         ╵                                   [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'assignedOfficerName' does not exist on type 'ClaimDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:156:47:
+[37m      156 │                   <div *ngIf="selectedClaim()?.[32massignedOfficerName[37m">
+          ╵                                                [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'assignedOfficerName' does not exist on type 'ClaimDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:158:79:
+[37m      158 │ ...sm text-gray-900">{{ selectedClaim()?.[32massignedOfficerName[37m }}</dd>
+          ╵                                          [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'fileSize' does not exist on type 'ClaimDocumentDto'. Did you mean 'fileSizeKb'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:180:81:
+[37m      180 │ ...k-0 text-gray-400">{{ (doc.[32mfileSize[37m / 1024).toFixed(1) }} KB</...
+          ╵                               [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'getMyClaims' does not exist on type 'ClaimsService'. Did you mean 'getClaims'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:231:27:
+[37m      231 │         this.claimsService.[32mgetMyClaims[37m(this.currentPage(), 50).su...
+          ╵                            [32m~~~~~~~~~~~[0m
+
+  'getClaims' is declared here.
+
+    src/app/core/services/claims.service.ts:19:4:
+[37m      19 │     [32mgetClaims[37m(params: any): Observable<ApiResponse<PagedResult<Cla...
+         ╵     [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'res' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:232:19:
+[37m      232 │             next: ([32mres[37m) => {
+          ╵                    [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 2.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/claims/claims.component.ts:244:42:
+[37m      244 │         this.policyService.getPolicies(1, [32m100[37m).subscribe(res => {
+          ╵                                           [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2322: Type 'string | null' is not assignable to type 'string | number'.
+  Type 'null' is not assignable to type 'string | number'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/customer-dashboard/customer-dashboard.component.ts:29:47:
+[37m      29 │ ...t-card title="Next Renewal" [[32mvalue[37m]="data.nextRenewalDate ? (da...
+         ╵                                 [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'items' does not exist on type 'NotificationDto[]'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/notifications/notifications.component.ts:85:52:
+[37m      85 │                     this.notifications.set(res.data.[32mitems[37m);
+         ╵                                                     [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'totalCount' does not exist on type 'NotificationDto[]'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/notifications/notifications.component.ts:86:59:
+[37m      86 │ ...         this.totalPages.set(Math.ceil(res.data.[32mtotalCount[37m / 10));
+         ╵                                                    [32m~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:33:42:
+[37m      33 │               (click)="loadPolicyDetail(p.[32mid[37m)"
+         ╵                                           [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDetailDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:34:52:
+[37m      34 │               [class.bg-blue-50]="selectedPolicy()?.[32mid[37m === p.id"
+         ╵                                                     [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:34:61:
+[37m      34 │               [class.bg-blue-50]="selectedPolicy()?.id === p.[32mid[37m"
+         ╵                                                              [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDetailDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:35:57:
+[37m      35 │               [class.border-blue-200]="selectedPolicy()?.[32mid[37m === p.id"
+         ╵                                                          [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:35:66:
+[37m      35 │               [class.border-blue-200]="selectedPolicy()?.id === p.[32mid[37m"
+         ╵                                                                   [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'planTier' does not exist on type 'PolicyDetailDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:79:126:
+[37m      79 │ ...icy()!.insuranceTypeName }} - {{ selectedPolicy()!.[32mplanTier[37m }}</p>
+         ╵                                                       [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 2.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:247:45:
+[37m      247 │ ...this.policyService.getPolicies(page, [32mthis.pageSize()[37m).subscribe({
+          ╵                                         [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDetailDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:285:63:
+[37m      285 │ ...Policy(this.selectedPolicy()!.[32mid[37m, this.cancelReason()).subscri...
+          ╵                                  [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 2.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:285:67:
+[37m      285 │ ...olicy(this.selectedPolicy()!.id, [32mthis.cancelReason()[37m).subscribe({
+          ╵                                     [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDetailDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:292:65:
+[37m      292 │ ...his.loadPolicyDetail(this.selectedPolicy()!.[32mid[37m); // reload detail
+          ╵                                                [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDetailDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:309:62:
+[37m      309 │ ....policyService.renewPolicy(this.selectedPolicy()!.[32mid[37m).subscribe({
+          ╵                                                      [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'PolicyDetailDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/policies/policies.component.ts:313:65:
+[37m      313 │ ...                this.loadPolicyDetail(this.selectedPolicy()!.[32mid[37m);
+          ╵                                                                 [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'planTier' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:57:102:
+[37m      57 │ ...00 mb-2">{{ quote.insuranceTypeName }} - {{ quote.[32mplanTier[37m }}</h4>
+         ╵                                                      [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'riskLevel' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:61:41:
+[37m      61 │               <app-badge [status]="quote.[32mriskLevel[37m"></app-badge>
+         ╵                                          [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'multiplier' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:62:108:
+[37m      62 │ ...{ quote.riskScore }} | Multiplier: {{ quote.[32mmultiplier[37m }}x)</span>
+         ╵                                                [32m~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'status' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:78:33:
+[37m      78 │ ...        <button *ngIf="quote.[32mstatus[37m === 'Available'" (click)="o...
+         ╵                                 [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'planTier' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:104:64:
+[37m      104 │ ...    <div class="font-medium text-gray-900">{{ q.[32mplanTier[37m }}</div>
+          ╵                                                    [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'riskLevel' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:108:89:
+[37m      108 │ ...wrap text-sm"><app-badge [status]="q.[32mriskLevel[37m"></app-badge></td>
+          ╵                                         [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'status' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:109:89:
+[37m      109 │ ...-sm"><app-badge [status]="q.[32mstatus[37m === 'Converted' ? 'Approved...
+          ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'status' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:111:37:
+[37m      111 │ ...           <button *ngIf="q.[32mstatus[37m === 'Available'" (click)="o...
+          ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'status' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:112:35:
+[37m      112 │ ...             <span *ngIf="q.[32mstatus[37m === 'Converted'" class="tex...
+          ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'status' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:113:35:
+[37m      113 │ ...             <span *ngIf="q.[32mstatus[37m === 'Expired'" class="text-...
+          ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'plans' does not exist on type 'InsuranceTypeDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:211:41:
+[37m      211 │             if (res.success && res.data?.[32mplans[37m) {
+          ╵                                          [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'plans' does not exist on type 'InsuranceTypeDto'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:212:40:
+[37m      212 │                 this.plans.set(res.data.[32mplans[37m);
+          ╵                                         [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2345: Argument of type '{ planId: number; }' is not assignable to parameter of type 'QuoteRequest'.
+  Property 'businessProfileId' is missing in type '{ planId: number; }' but required in type 'QuoteRequest'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:231:40:
+[37m      231 │ ...ice.generateQuote([32m{ planId: this.selectedPlanId()! }[37m).subscribe({
+          ╵                      [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  'businessProfileId' is declared here.
+
+    src/app/core/models/quote.model.ts:2:4:
+[37m      2 │     [32mbusinessProfileId[37m: number | string;
+        ╵     [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'id' does not exist on type 'QuoteResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/customer/quotes/quotes.component.ts:266:49:
+[37m      266 │             quoteId: this.selectedQuoteToConvert.[32mid[37m,
+          ╵                                                  [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'emptyMessage' does not exist on type 'DataTableComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/shared/components/data-table.component.ts:30:19:
+[37m      30 │                 {{ [32memptyMessage[37m }}
+         ╵                    [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./features/auth/unauthorized/unauthorized.component"[0m
+
+    src/app/app.routes.ts:9:56:
+[37m      9 │ ... => import([32m'./features/auth/unauthorized/unauthorized.component'[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./features/customer/customer-policies/customer-policies.component"[0m
+
+    src/app/app.routes.ts:32:60:
+[37m      32 │ ...=> import([32m'./features/customer/customer-policies/customer-polic[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./features/customer/customer-claims/customer-claims.component"[0m
+
+    src/app/app.routes.ts:34:58:
+[37m      34 │ ...=> import([32m'./features/customer/customer-claims/customer-claims.[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./features/agent/commissions/commissions.component"[0m
+
+    src/app/app.routes.ts:47:63:
+[37m      47 │ ...=> import([32m'./features/agent/commissions/commissions.component'[37m)...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./features/officer/officer-claims/officer-claims.component"[0m
+
+    src/app/app.routes.ts:58:58:
+[37m      58 │ ...=> import([32m'./features/officer/officer-claims/officer-claims.com[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
