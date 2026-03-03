@@ -67,7 +67,7 @@ export class AuthService {
     }
 
     adminCreateUser(req: AdminCreateUserRequest): Observable<ApiResponse<AuthResponse>> {
-        return this.http.post<ApiResponse<AuthResponse>>(`${this.API_URL}/admin-create`, req);
+        return this.http.post<ApiResponse<AuthResponse>>(`${this.API_URL}/admin/create-user`, req);
     }
 
     logout(): void {

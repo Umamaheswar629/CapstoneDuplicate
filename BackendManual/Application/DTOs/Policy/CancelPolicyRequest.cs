@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.Policy
+namespace Application.DTOs.Policy;
+
+public class CancelPolicyRequest
 {
-    public class CancelPolicyRequest
-    {
-    }
+    [Required]
+    public int PolicyId { get; set; }
+
+    public string? Reason { get; set; }
 }

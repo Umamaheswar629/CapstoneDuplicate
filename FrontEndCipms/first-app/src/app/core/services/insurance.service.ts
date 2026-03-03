@@ -32,10 +32,14 @@ export class InsuranceService {
     }
 
     toggleTypeStatus(id: number | string): Observable<ApiResponse<boolean>> {
-        return this.http.put<ApiResponse<boolean>>(`${this.API_URL}/types/${id}/toggle`, {});
+        return this.http.patch<ApiResponse<boolean>>(`${this.API_URL}/types/${id}/toggle`, {});
     }
 
     createPlan(req: CreatePlanRequest): Observable<ApiResponse<PlanDto>> {
         return this.http.post<ApiResponse<PlanDto>>(`${this.API_URL}/plans`, req);
+    }
+
+    getPlansByType(typeId: number | string): Observable<ApiResponse<PlanDto[]>> {
+        return this.http.get<ApiResponse<PlanDto[]>>(`${this.API_URL}/types/${typeId}/plans`);
     }
 }

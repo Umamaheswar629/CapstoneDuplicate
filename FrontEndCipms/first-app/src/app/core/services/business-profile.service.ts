@@ -9,7 +9,7 @@ import { BusinessProfileDto, CreateBusinessProfileRequest, UpdateBusinessProfile
 })
 export class BusinessProfileService {
     private http = inject(HttpClient);
-    private readonly API_URL = 'https://localhost:7207/api/business-profile';
+    private readonly API_URL = 'https://localhost:7207/api/BusinessProfile';
 
     getMyProfile(): Observable<ApiResponse<BusinessProfileDto>> {
         return this.http.get<ApiResponse<BusinessProfileDto>>(this.API_URL);

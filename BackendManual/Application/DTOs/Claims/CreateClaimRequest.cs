@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.Claims
+namespace Application.DTOs.Claims;
+
+public class CreateClaimRequest
 {
-    public class CreateClaimRequest
-    {
-    }
+    [Required]
+    public int PolicyId { get; set; }
+
+    [Required]
+    public string IncidentType { get; set; } = string.Empty;
+
+    [Required]
+    public DateTime IncidentDate { get; set; }
+
+    [Required]
+    public string Description { get; set; } = string.Empty;
+
+    [Required]
+    public decimal EstimatedAmount { get; set; }
 }

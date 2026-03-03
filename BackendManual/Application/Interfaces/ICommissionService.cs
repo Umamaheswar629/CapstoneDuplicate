@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.DTOs.Commission;
+using Application.DTOs.Common;
+using Domain.Enmus;
 
-namespace Application.Interfaces
+namespace Application.Interfaces;
+
+public interface ICommissionService
 {
-    public class ICommissionService
-    {
-    }
+    Task<ApiResponse<CommissionSummaryDto>> GetAgentCommissionSummaryAsync(int agentId, int requesterId, UserRole role);
+    Task<ApiResponse<PagedResult<CommissionDto>>> GetCommissionsAsync(int page, int pageSize, int userId, UserRole role);
+    Task<ApiResponse<List<AgentPerformanceDto>>> GetAllAgentPerformanceAsync();
 }

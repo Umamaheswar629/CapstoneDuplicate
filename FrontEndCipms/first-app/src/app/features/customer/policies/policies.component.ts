@@ -45,7 +45,7 @@ export class PoliciesComponent implements OnInit {
 
   loadPolicies(page: number) {
     this.loading.set(true);
-    this.policyService.getPolicies({ pageNumber: page, pageSize: this.pageSize() }).subscribe({
+    this.policyService.getPolicies({ page: page, pageSize: this.pageSize() }).subscribe({
       next: (res) => {
         this.loading.set(false);
         if (res.success && res.data) {

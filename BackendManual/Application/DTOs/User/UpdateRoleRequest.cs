@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.DTOs.User;
 
-namespace Application.DTOs.User
+public class UpdateRoleRequest
 {
-    public class UpdateRoleRequest
-    {
-    }
+    public int UserId { get; set; }
+    public int NewRole { get; set; }
 }

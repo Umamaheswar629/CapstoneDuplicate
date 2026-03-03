@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.DTOs.Claims;
 
-namespace Application.DTOs.Claims
+public class ClaimDocumentDto
 {
-    public class ClaimDocumentDto
-    {
-    }
+    public int DocumentId { get; set; }
+    public string FileName { get; set; } = string.Empty;
+    public string FileType { get; set; } = string.Empty;
+    public double FileSizeKb { get; set; }
+    public DateTime UploadedAt { get; set; }
+    public string DownloadUrl { get; set; } = string.Empty;
 }

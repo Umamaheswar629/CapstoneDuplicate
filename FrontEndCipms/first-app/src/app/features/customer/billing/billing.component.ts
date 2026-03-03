@@ -243,7 +243,7 @@ export class BillingComponent implements OnInit {
     });
 
     // We only need active/all policies for the dropdown filter. Getting first 50.
-    this.policyService.getPolicies({ pageNumber: 1, pageSize: 50 }).subscribe((res: any) => {
+    this.policyService.getPolicies({ page: 1, pageSize: 50 }).subscribe((res: any) => {
       if (res.success && res.data) this.policies.set(res.data.items);
       checkDone();
     });
@@ -310,8 +310,9 @@ export class BillingComponent implements OnInit {
 
     this.actionLoading.set(true);
     this.billingService.generateEmi({
-      policyId: eligibleInvoice.policyId,
-      numberOfMonths: this.emiMonths()
+      policyId: eligibleInvoice.policyId ? Number(eligibleInvoice.policyId) : 0,
+      invoiceId: eligibleInvoice.invoiceId ? Number(eligibleInvoice.invoiceId) : 0,
+      numberOfMonths: Number(this.emiMonths())
     }).subscribe({
       next: (res) => {
         this.actionLoading.set(false);
@@ -319,9 +320,25 @@ export class BillingComponent implements OnInit {
           this.showEmiModal.set(false);
           this.successMsg.set('Invoice successfully converted to EMI instalments.');
           this.loadInvoices(this.selectedPolicyId()); // Refresh list to see EMI breakdown
+        } else {
+          console.error('Backend returned 200 but success=false:', res);
+          this.successMsg.set('');
+          alert('EMI Generation Failed: ' + (res.message || 'Unknown backend logic error'));
         }
       },
-      error: () => this.actionLoading.set(false)
+      error: (err) => {
+        this.actionLoading.set(false);
+        console.error('EMI HTTP Error:', err);
+
+        let errorTxt = 'Server error. ';
+        if (err.error) {
+          if (typeof err.error === 'string') errorTxt += err.error;
+          else if (err.error.message) errorTxt += err.error.message;
+          else errorTxt += JSON.stringify(err.error);
+        }
+
+        alert('HTTP 400 Failed: ' + errorTxt);
+      }
     });
   }
 }

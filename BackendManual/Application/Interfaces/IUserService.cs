@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.DTOs.Common;
+using Application.DTOs.User;
 
-namespace Application.Interfaces
+namespace Application.Interfaces;
+
+public interface IUserService
 {
-    public class IUserService
-    {
-    }
+    Task<ApiResponse<UserDto>> GetCurrentUserAsync(int userId);
+    Task<ApiResponse<PagedResult<UserDto>>> GetAllUsersAsync(int page, int pageSize, string? role, string? search);
+    Task<ApiResponse<UserDto>> GetUserByIdAsync(int id);
+    Task<ApiResponse<UserDto>> UpdateUserRoleAsync(UpdateRoleRequest request);
+    Task<ApiResponse<UserDto>> ToggleUserStatusAsync(int id);
 }

@@ -64,7 +64,7 @@ export class AgentPoliciesComponent implements OnInit {
     // Note: ensure your backend policyService properly passes these arguments or modifies accordingly 
     // for agent scoping based on JWT payload.
     // The instructions say backend filters by agentId automatically.
-    this.policyService.getPolicies({ pageNumber: page, pageSize: this.pageSize(), status, search }).subscribe({
+    this.policyService.getPolicies({ page: page, pageSize: this.pageSize(), status, search }).subscribe({
       next: (res) => {
         this.loading.set(false);
         if (res.success && res.data) {
@@ -82,6 +82,20 @@ export class AgentPoliciesComponent implements OnInit {
         if (res.success && res.data) {
           this.selectedPolicy.set(res.data);
         }
+      }
+    });
+  }
+
+  approvePolicy(id: number | string) {
+    this.policyService.approvePolicy(id).subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.selectedPolicy.set(null);
+          this.loadPolicies(this.currentPage(), this.statusFilter(), this.searchTerm());
+        }
+      },
+      error: (err) => {
+        alert('Failed to approve: ' + (err.error?.message || 'Unknown error'));
       }
     });
   }

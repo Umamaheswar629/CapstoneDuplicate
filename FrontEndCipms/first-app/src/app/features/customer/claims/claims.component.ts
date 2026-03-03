@@ -38,6 +38,7 @@ export class ClaimsComponent implements OnInit {
   incidentType = signal('');
   description = signal('');
   estimatedAmount = signal<number>(0);
+  selectedFile = signal<File | null>(null);
 
   maxDate = new Date().toISOString().split('T')[0];
 
@@ -48,7 +49,7 @@ export class ClaimsComponent implements OnInit {
 
   loadClaims() {
     this.loading.set(true);
-    this.claimsService.getClaims({ pageNumber: this.currentPage(), pageSize: 50 }).subscribe({
+    this.claimsService.getClaims({ page: this.currentPage(), pageSize: 50 }).subscribe({
       next: (res: any) => {
         this.loading.set(false);
         if (res.success && res.data) {
@@ -61,7 +62,7 @@ export class ClaimsComponent implements OnInit {
   }
 
   loadActivePolicies() {
-    this.policyService.getPolicies({ pageNumber: 1, pageSize: 100 }).subscribe((res: any) => {
+    this.policyService.getPolicies({ page: 1, pageSize: 100 }).subscribe((res: any) => {
       if (res.success && res.data) {
         // filter purely active policies usually, but leaving it open to whatever API returns for now
         this.policies.set(res.data.items.filter((p: any) => p.status === 'Active'));
@@ -71,6 +72,13 @@ export class ClaimsComponent implements OnInit {
 
   selectClaim(claim: ClaimDto) {
     this.selectedClaim.set(claim);
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile.set(file);
+    }
   }
 
   submitClaim() {
@@ -85,21 +93,21 @@ export class ClaimsComponent implements OnInit {
       estimatedAmount: this.estimatedAmount()
     }).subscribe({
       next: (res) => {
-        this.submitting.set(false);
-        if (res.success) {
-          this.successMsg.set('Claim filed successfully! Tracking number assigned.');
-
-          // Reset form
-          this.policyId.set(0);
-          this.incidentDate.set('');
-          this.incidentType.set('');
-          this.description.set('');
-          this.estimatedAmount.set(0);
-
-          // Switch tab & reload
-          this.activeTab.set('list');
-          this.loadClaims();
+        if (res.success && res.data?.claimId) {
+          // If a file was selected, upload it now
+          if (this.selectedFile()) {
+            this.claimsService.uploadClaimDocument(Number(res.data.claimId), this.selectedFile()!).subscribe({
+              next: () => this.finalizeSubmission(),
+              error: () => {
+                this.errorMsg.set('Claim filed, but document upload failed.');
+                this.finalizeSubmission();
+              }
+            });
+          } else {
+            this.finalizeSubmission();
+          }
         } else {
+          this.submitting.set(false);
           this.errorMsg.set(res.message || 'Error filing claim');
         }
       },
@@ -108,5 +116,26 @@ export class ClaimsComponent implements OnInit {
         this.errorMsg.set(err.error?.message || 'Server error');
       }
     });
+  }
+
+  private finalizeSubmission() {
+    this.submitting.set(false);
+    this.successMsg.set('Claim filed successfully! Tracking number assigned.');
+
+    // Reset form
+    this.policyId.set(0);
+    this.incidentDate.set('');
+    this.incidentType.set('');
+    this.description.set('');
+    this.estimatedAmount.set(0);
+    this.selectedFile.set(null);
+
+    // Clear file input DOM element if present
+    const fileInput = document.getElementById('claim-document') as HTMLInputElement;
+    if (fileInput) fileInput.value = '';
+
+    // Switch tab & reload
+    this.activeTab.set('list');
+    this.loadClaims();
   }
 }

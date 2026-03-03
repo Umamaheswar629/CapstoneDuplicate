@@ -3,7 +3,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', loadComponent: () => import('./features/landing/landing.component').then(c => c.LandingComponent) },
     { path: 'login', loadComponent: () => import('./features/auth/login/login.component').then(c => c.LoginComponent) },
     { path: 'register', loadComponent: () => import('./features/auth/register/register.component').then(c => c.RegisterComponent) },
     { path: 'unauthorized', loadComponent: () => import('./features/unauthorized/unauthorized.component').then(c => c.UnauthorizedComponent) },
@@ -24,7 +24,7 @@ export const routes: Routes = [
         path: 'customer',
         loadComponent: () => import('./layouts/customer-layout/customer-layout.component').then(c => c.CustomerLayoutComponent),
         canActivate: [authGuard, roleGuard],
-        data: { roles: ['User'] },
+        data: { roles: ['Customer'] },
         children: [
             { path: 'dashboard', loadComponent: () => import('./features/customer/customer-dashboard/customer-dashboard.component').then(c => c.CustomerDashboardComponent) },
             { path: 'business-profile', loadComponent: () => import('./features/customer/business-profile/business-profile.component').then(c => c.BusinessProfileComponent) },
@@ -33,6 +33,7 @@ export const routes: Routes = [
             { path: 'billing', loadComponent: () => import('./features/customer/billing/billing.component').then(c => c.BillingComponent) },
             { path: 'claims', loadComponent: () => import('./features/customer/claims/claims.component').then(c => c.ClaimsComponent) },
             { path: 'notifications', loadComponent: () => import('./features/customer/notifications/notifications.component').then(c => c.NotificationsComponent) },
+            { path: 'error-log', loadComponent: () => import('./shared/components/error-log.component').then(c => c.ErrorLogComponent) },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
     },
@@ -45,6 +46,8 @@ export const routes: Routes = [
             { path: 'dashboard', loadComponent: () => import('./features/agent/agent-dashboard/agent-dashboard.component').then(c => c.AgentDashboardComponent) },
             { path: 'policies', loadComponent: () => import('./features/agent/agent-policies/agent-policies.component').then(c => c.AgentPoliciesComponent) },
             { path: 'commissions', loadComponent: () => import('./features/agent/agent-commissions/agent-commissions.component').then(c => c.AgentCommissionsComponent) },
+            { path: 'notifications', loadComponent: () => import('./features/customer/notifications/notifications.component').then(c => c.NotificationsComponent) },
+            { path: 'error-log', loadComponent: () => import('./shared/components/error-log.component').then(c => c.ErrorLogComponent) },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
     },
@@ -56,6 +59,8 @@ export const routes: Routes = [
         children: [
             { path: 'dashboard', loadComponent: () => import('./features/officer/officer-dashboard/officer-dashboard.component').then(c => c.OfficerDashboardComponent) },
             { path: 'claims', loadComponent: () => import('./features/officer/claims/claims.component').then(c => c.OfficerClaimsComponent) },
+            { path: 'notifications', loadComponent: () => import('./features/customer/notifications/notifications.component').then(c => c.NotificationsComponent) },
+            { path: 'error-log', loadComponent: () => import('./shared/components/error-log.component').then(c => c.ErrorLogComponent) },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
     },

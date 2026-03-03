@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.DTOs.Analytics;
+using Application.DTOs.Common;
 
-namespace Application.Interfaces
+namespace Application.Interfaces;
+
+public interface IAnalyticsService
 {
-    public class IAnalyticsService
-    {
-    }
+    Task<ApiResponse<DashboardStatsDto>> GetAdminDashboardStatsAsync();
+    Task<ApiResponse<List<PoliciesByTypeDto>>> GetPoliciesByTypeAsync();
+    Task<ApiResponse<List<MonthlyRevenueDto>>> GetMonthlyRevenueAsync(int months);
+    Task<ApiResponse<ClaimsRatioDto>> GetClaimsRatioAsync();
+    Task<ApiResponse<List<AgentPerformanceDto>>> GetAgentPerformanceAsync();
+    Task<ApiResponse<List<PlanDistributionDto>>> GetPlanDistributionAsync();
+    Task<ApiResponse<CustomerDashboardDto>> GetCustomerDashboardAsync(int userId);
 }

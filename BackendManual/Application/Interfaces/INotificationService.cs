@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.DTOs.Common;
+using Application.DTOs.Notifications;
 
-namespace Application.Interfaces
+namespace Application.Interfaces;
+
+public interface INotificationService
 {
-    public class INotificationService
-    {
-    }
+    Task<ApiResponse<List<NotificationDto>>> GetUserNotificationsAsync(int userId, int page, int pageSize);
+    Task<ApiResponse<int>> GetUnreadCountAsync(int userId);
+    Task<ApiResponse<NotificationDto>> MarkAsReadAsync(int id, int userId);
+    Task MarkAllAsReadAsync(int userId);
 }

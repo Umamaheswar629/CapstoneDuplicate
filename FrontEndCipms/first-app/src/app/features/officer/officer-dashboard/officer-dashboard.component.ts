@@ -22,7 +22,7 @@ export class OfficerDashboardComponent implements OnInit {
   loading = signal(true);
 
   totalAssigned = computed(() => this.claims().length);
-  pendingReview = computed(() => this.claims().filter(c => c.status === 'Submitted' || c.status === 'UnderReview').length);
+  pendingReview = computed(() => this.claims().filter(c => c.status === 'Filed' || c.status === 'UnderReview').length);
   approvedCount = computed(() => this.claims().filter(c => c.status === 'Approved' || c.status === 'Settled').length);
   rejectedCount = computed(() => this.claims().filter(c => c.status === 'Rejected').length);
 
@@ -40,7 +40,7 @@ export class OfficerDashboardComponent implements OnInit {
     this.loading.set(true);
     // Note: API might need to properly scope this to assigned claims exclusively.
     // The instructions say the backend filters it automatically based on auth context.
-    this.claimsService.getClaims({ pageNumber: 1, pageSize: 100 }).subscribe({
+    this.claimsService.getClaims({ page: 1, pageSize: 100 }).subscribe({
       next: (res: any) => {
         this.loading.set(false);
         if (res.success && res.data) {

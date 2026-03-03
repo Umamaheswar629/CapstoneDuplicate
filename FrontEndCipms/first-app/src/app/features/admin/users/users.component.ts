@@ -77,11 +77,11 @@ export class UsersComponent {
   }
 
   getRoleValue(roleString: string | number): number {
-    if (roleString === 'User') return 0;
     if (roleString === 'Admin') return 1;
     if (roleString === 'Agent') return 2;
-    if (roleString === 'ClaimsOfficer') return 3;
-    return 0;
+    if (roleString === 'Customer') return 3;
+    if (roleString === 'ClaimsOfficer') return 4;
+    return 3; // Default Customer
   }
 
   updateRole(userId: string | number, newRole: number) {
@@ -109,7 +109,7 @@ export class UsersComponent {
       fullName: this.fullName(),
       email: this.email(),
       password: this.password(),
-      role: this.role()
+      role: Number(this.role())
     }).subscribe({
       next: (res) => {
         this.createLoading.set(false);

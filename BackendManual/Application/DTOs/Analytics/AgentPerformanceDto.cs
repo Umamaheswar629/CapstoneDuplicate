@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.DTOs.Analytics;
 
-namespace Application.DTOs.Analytics
+public class AgentPerformanceDto
 {
-    public class AgentPerformanceDto
-    {
-    }
+    public int AgentId { get; set; }
+    public string AgentName { get; set; } = string.Empty;
+    public int TotalPolicies { get; set; }
+    public decimal TotalCommission { get; set; }
+    public decimal AveragePremium { get; set; }
 }

@@ -37,4 +37,8 @@ export class PolicyService {
     cancelPolicy(req: CancelPolicyRequest): Observable<ApiResponse<boolean>> {
         return this.http.post<ApiResponse<boolean>>(`${this.API_URL}/cancel`, req);
     }
+
+    approvePolicy(id: number | string): Observable<ApiResponse<PolicyDto>> {
+        return this.http.post<ApiResponse<PolicyDto>>(`${this.API_URL}/${id}/approve`, {});
+    }
 }

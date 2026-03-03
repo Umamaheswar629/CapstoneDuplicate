@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.DTOs.Common;
+using Application.DTOs.Insurance;
 
-namespace Application.Interfaces
+namespace Application.Interfaces;
+
+public interface IBusinessProfileService
 {
-    public class IBusinessProfileService
-    {
-    }
+    Task<ApiResponse<BusinessProfileDto>> GetByUserIdAsync(int userId);
+    Task<ApiResponse<BusinessProfileDto>> CreateAsync(int userId, CreateBusinessProfileRequest request);
+    Task<ApiResponse<BusinessProfileDto>> UpdateAsync(int userId, UpdateBusinessProfileRequest request);
 }

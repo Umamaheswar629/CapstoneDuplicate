@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { NotificationService } from '../../core/services/notification.service';
+import { ErrorLogService } from '../../core/services/error-log.service';
 
 @Component({
     selector: 'app-officer-layout',
@@ -16,6 +17,7 @@ import { NotificationService } from '../../core/services/notification.service';
 export class OfficerLayoutComponent implements OnInit, OnDestroy {
     authService = inject(AuthService);
     notificationService = inject(NotificationService);
+    errorLogService = inject(ErrorLogService);
 
     sidebarOpen = signal(true);
     currentUser = this.authService.currentUser;

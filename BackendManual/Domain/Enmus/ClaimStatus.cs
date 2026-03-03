@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Enmus
+﻿namespace Domain.Enmus
 {
-    public class ClaimStatus
+    public enum ClaimStatus
     {
+        Filed = 1,
+        UnderReview = 2,
+        Approved = 3,
+        Rejected = 4,
+        Settled = 5,
+        Closed = 6
     }
 }

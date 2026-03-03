@@ -33,7 +33,7 @@ export class OfficerClaimsComponent implements OnInit {
   showDecisionModal = signal(false);
 
   // Form State
-  decision = signal<'Approve' | 'Reject'>('Approve');
+  decision = signal<'Approved' | 'Rejected'>('Approved');
   settlementAmount = signal<number>(0);
   notes = signal('');
   decisionLoading = signal(false);
@@ -43,7 +43,7 @@ export class OfficerClaimsComponent implements OnInit {
 
   statusOptions = [
     { label: 'All', value: '' },
-    { label: 'Submitted', value: 'Submitted' },
+    { label: 'Filed', value: 'Filed' },
     { label: 'Under Review', value: 'UnderReview' },
     { label: 'Approved', value: 'Approved' },
     { label: 'Rejected', value: 'Rejected' },
@@ -76,7 +76,7 @@ export class OfficerClaimsComponent implements OnInit {
 
   loadClaims(page: number, status: string) {
     this.loading.set(true);
-    this.claimsService.getClaims({ pageNumber: page, pageSize: this.pageSize(), status }).subscribe({
+    this.claimsService.getClaims({ page: page, pageSize: this.pageSize(), status }).subscribe({
       next: (res: any) => {
         this.loading.set(false);
         if (res.success && res.data) {
@@ -94,7 +94,7 @@ export class OfficerClaimsComponent implements OnInit {
     if (this.isProcessable(claim.status)) {
       // By opening detail, we might call back to immediately switch status from 'Submitted' to 'UnderReview'
       // That depends on business logic, here we just show the form.
-      this.decision.set('Approve');
+      this.decision.set('Approved');
       this.settlementAmount.set(claim.estimatedAmount || 0); // Pre-fill with estimated
       this.notes.set('');
     }
@@ -107,12 +107,12 @@ export class OfficerClaimsComponent implements OnInit {
   }
 
   isProcessable(status: string) {
-    return status === 'Submitted' || status === 'UnderReview';
+    return status === 'Filed' || status === 'UnderReview';
   }
 
   isFormValid() {
     if (!this.notes().trim()) return false;
-    if (this.decision() === 'Approve') {
+    if (this.decision() === 'Approved') {
       const maxLimit = (this.selectedClaim() as any)?.coverageLimit || 99999999;
       if (this.settlementAmount() <= 0 || this.settlementAmount() > maxLimit) {
         return false;
@@ -126,20 +126,18 @@ export class OfficerClaimsComponent implements OnInit {
 
     this.decisionLoading.set(true);
 
-    // Convert to exactly what the backend expects
-    // Based on Claims model: updateStatus expects { claimId, status, rejectionReason?, settlementAmount? }
-    const statusPayload = this.decision() === 'Approve' ? 'Approved' : 'Rejected';
+    const currentClaim = this.selectedClaim()!;
 
     this.claimsService.processDecision({
-      claimId: this.selectedClaim()!.claimId,
-      decision: statusPayload,
-      notes: this.notes(),
-      settlementAmount: this.decision() === 'Approve' ? this.settlementAmount() : undefined
+      claimId: Number(currentClaim.claimId),
+      decision: this.decision(),
+      notes: this.notes() || 'Decision submitted',
+      settlementAmount: this.decision() === 'Approved' ? Number(this.settlementAmount()) || 0 : undefined
     }).subscribe({
       next: (res: any) => {
         this.decisionLoading.set(false);
         if (res.success) {
-          this.successMsg.set(`Claim ${this.selectedClaim()!.claimNumber} successfully ${statusPayload.toLowerCase()}.`);
+          this.successMsg.set(`Claim ${this.selectedClaim()!.claimNumber} successfully ${this.decision().toLowerCase()}.`);
           this.closeModal();
           this.loadClaims(this.currentPage(), this.statusFilter());
         } else {

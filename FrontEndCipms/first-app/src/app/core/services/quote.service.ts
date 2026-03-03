@@ -9,10 +9,10 @@ import { QuoteRequest, QuoteResponse } from '../models/quote.model';
 })
 export class QuoteService {
     private http = inject(HttpClient);
-    private readonly API_URL = 'https://localhost:7207/api/quotes';
+    private readonly API_URL = 'https://localhost:7207/api/Quotes';
 
     generateQuote(req: QuoteRequest): Observable<ApiResponse<QuoteResponse>> {
-        return this.http.post<ApiResponse<QuoteResponse>>(`${this.API_URL}/generate`, req);
+        return this.http.post<ApiResponse<QuoteResponse>>(`${this.API_URL}`, req);
     }
 
     getQuoteById(id: number | string): Observable<ApiResponse<QuoteResponse>> {
@@ -20,6 +20,6 @@ export class QuoteService {
     }
 
     getMyQuotes(): Observable<ApiResponse<QuoteResponse[]>> {
-        return this.http.get<ApiResponse<QuoteResponse[]>>(`${this.API_URL}/my-quotes`);
+        return this.http.get<ApiResponse<QuoteResponse[]>>(`${this.API_URL}/my`);
     }
 }

@@ -9,7 +9,7 @@ import { InvoiceDto, PaymentDto, RecordPaymentRequest, GenerateEmiRequest, Billi
 })
 export class BillingService {
     private http = inject(HttpClient);
-    private readonly API_URL = 'https://localhost:7207/api/billing';
+    private readonly API_URL = 'https://localhost:7207/api/Billing';
 
     getInvoicesByPolicy(policyId: number | string): Observable<ApiResponse<InvoiceDto[]>> {
         return this.http.get<ApiResponse<InvoiceDto[]>>(`${this.API_URL}/policy/${policyId}/invoices`);
@@ -20,7 +20,7 @@ export class BillingService {
     }
 
     recordPayment(req: RecordPaymentRequest): Observable<ApiResponse<PaymentDto>> {
-        return this.http.post<ApiResponse<PaymentDto>>(`${this.API_URL}/pay`, req);
+        return this.http.post<ApiResponse<PaymentDto>>(`${this.API_URL}/payments`, req);
     }
 
     generateEmi(req: GenerateEmiRequest): Observable<ApiResponse<InvoiceDto[]>> {

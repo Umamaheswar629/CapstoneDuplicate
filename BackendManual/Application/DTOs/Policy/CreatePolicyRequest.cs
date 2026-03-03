@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.Policy
+namespace Application.DTOs.Policy;
+
+public class CreatePolicyRequest
 {
-    public class CreatePolicyRequest
-    {
-    }
+    [Required]
+    public int QuoteId { get; set; }
+
+    public DateTime? StartDate { get; set; }
+
+    public int? AgentId { get; set; }
 }

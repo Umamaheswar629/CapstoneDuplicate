@@ -77,13 +77,9 @@ export class QuotesComponent implements OnInit {
   }
 
   loadPlans(typeId: number) {
-    this.insuranceService.comparePlans(typeId).subscribe((res: any) => {
+    this.insuranceService.getPlansByType(typeId).subscribe((res: any) => {
       if (res.success && res.data) {
-        const arr = [];
-        if (res.data.basicPlan) arr.push(res.data.basicPlan);
-        if (res.data.standardPlan) arr.push(res.data.standardPlan);
-        if (res.data.premiumPlan) arr.push(res.data.premiumPlan);
-        this.plans.set(arr);
+        this.plans.set(res.data);
         this.selectedPlanId.set(null);
       }
     });

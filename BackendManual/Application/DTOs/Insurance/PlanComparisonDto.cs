@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.DTOs.Insurance;
 
-namespace Application.DTOs.Insurance
+public class PlanComparisonDto
 {
-    public class PlanComparisonDto
-    {
-    }
+    public int InsuranceTypeId { get; set; }
+    public string InsuranceTypeName { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public PlanDto? BasicPlan { get; set; }
+    public PlanDto? StandardPlan { get; set; }
+    public PlanDto? PremiumPlan { get; set; }
 }

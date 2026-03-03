@@ -6,10 +6,10 @@ import { InsuranceTypeDto, PlanComparisonDto } from '../../../core/models/insura
 import { BadgeComponent } from '../../../shared/components/badge.component';
 
 @Component({
-    selector: 'app-insurance',
-    standalone: true,
-    imports: [CommonModule, FormsModule, BadgeComponent],
-    template: `
+  selector: 'app-insurance',
+  standalone: true,
+  imports: [CommonModule, FormsModule, BadgeComponent],
+  template: `
     <div class="h-[calc(100vh-8rem)] flex flex-col space-y-4">
       <div class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100">
         <h2 class="text-xl font-semibold text-gray-800">Insurance Management</h2>
@@ -204,102 +204,108 @@ import { BadgeComponent } from '../../../shared/components/badge.component';
   `
 })
 export class InsuranceComponent implements OnInit {
-    private insuranceService = inject(InsuranceService);
+  private insuranceService = inject(InsuranceService);
 
-    types = signal<InsuranceTypeDto[]>([]);
-    selectedType = signal<InsuranceTypeDto | null>(null);
-    comparison = signal<PlanComparisonDto | null>(null);
-    loading = signal(false);
+  types = signal<InsuranceTypeDto[]>([]);
+  selectedType = signal<InsuranceTypeDto | null>(null);
+  comparison = signal<PlanComparisonDto | null>(null);
+  loading = signal(false);
 
-    // Type Form
-    showTypeForm = signal(false);
-    name = signal('');
-    description = signal('');
-    category = signal('');
+  // Type Form
+  showTypeForm = signal(false);
+  name = signal('');
+  description = signal('');
+  category = signal('');
 
-    // Plan Form
-    showPlanForm = signal(false);
-    tierName = signal('Basic');
-    basePremium = signal(0);
-    coverageLimit = signal(0);
-    commissionRate = signal(0);
-    featuresText = signal('');
-    exclusionsText = signal('');
+  // Plan Form
+  showPlanForm = signal(false);
+  tierName = signal('Basic');
+  basePremium = signal(0);
+  coverageLimit = signal(0);
+  commissionRate = signal(0);
+  featuresText = signal('');
+  exclusionsText = signal('');
 
-    ngOnInit() {
+  ngOnInit() {
+    this.loadTypes();
+  }
+
+  loadTypes() {
+    this.loading.set(true);
+    this.insuranceService.getAllTypes().subscribe(res => {
+      this.loading.set(false);
+      if (res.success && res.data) {
+        this.types.set(res.data);
+      }
+    });
+  }
+
+  selectType(type: InsuranceTypeDto) {
+    this.selectedType.set(type);
+    this.comparison.set(null);
+    this.insuranceService.comparePlans(type.id).subscribe(res => {
+      if (res.success && res.data) {
+        this.comparison.set(res.data);
+      }
+    });
+  }
+
+  toggleTypeStatus(type: InsuranceTypeDto, event: Event) {
+    event.stopPropagation();
+    this.insuranceService.toggleTypeStatus(type.id).subscribe(res => {
+      if (res.success) {
         this.loadTypes();
-    }
+        if (this.selectedType()?.id === type.id) {
+          this.selectedType.set(null);
+        }
+      }
+    });
+  }
 
-    loadTypes() {
-        this.loading.set(true);
-        this.insuranceService.getAllTypes().subscribe(res => {
-            this.loading.set(false);
-            if (res.success && res.data) {
-                this.types.set(res.data);
-            }
-        });
-    }
+  saveType() {
+    this.insuranceService.createType({
+      name: this.name(),
+      description: this.description(),
+      category: this.category()
+    }).subscribe(res => {
+      if (res.success) {
+        this.showTypeForm.set(false);
+        this.name.set('');
+        this.description.set('');
+        this.category.set('');
+        this.loadTypes();
+      }
+    });
+  }
 
-    selectType(type: InsuranceTypeDto) {
-        this.selectedType.set(type);
-        this.comparison.set(null);
-        this.insuranceService.comparePlans(type.id).subscribe(res => {
-            if (res.success && res.data) {
-                this.comparison.set(res.data);
-            }
-        });
-    }
+  savePlan() {
+    if (!this.selectedType()) return;
 
-    toggleTypeStatus(type: InsuranceTypeDto, event: Event) {
-        event.stopPropagation();
-        this.insuranceService.toggleTypeStatus(type.id).subscribe(res => {
-            if (res.success) {
-                this.loadTypes();
-                if (this.selectedType()?.id === type.id) {
-                    this.selectedType.set(null);
-                }
-            }
-        });
-    }
-
-    saveType() {
-        this.insuranceService.createType({
-            name: this.name(),
-            description: this.description(),
-            category: this.category()
-        }).subscribe(res => {
-            if (res.success) {
-                this.showTypeForm.set(false);
-                this.name.set('');
-                this.description.set('');
-                this.category.set('');
-                this.loadTypes();
-            }
-        });
-    }
-
-    savePlan() {
-        if (!this.selectedType()) return;
-
-        this.insuranceService.createPlan({
-            insuranceTypeId: this.selectedType()!.id,
-            tierName: this.tierName(),
-            basePremium: this.basePremium(),
-            coverageLimit: this.coverageLimit(),
-            commissionRate: this.commissionRate(),
-            features: this.featuresText().split(',').map(s => s.trim()).filter(s => s),
-            exclusions: this.exclusionsText().split(',').map(s => s.trim()).filter(s => s)
-        }).subscribe(res => {
-            if (res.success) {
-                this.showPlanForm.set(false);
-                this.tierName.set('Basic');
-                this.basePremium.set(0);
-                this.coverageLimit.set(0);
-                this.commissionRate.set(0);
-                this.featuresText.set('');
-                this.exclusionsText.set('');
-                this.selectType(this.selectedType()!); // refresh plans
-            }
-        });
-    }
+    this.insuranceService.createPlan({
+      insuranceTypeId: Number(this.selectedType()!.id),
+      tierName: this.tierName(),
+      basePremium: Number(this.basePremium()),
+      coverageLimit: Number(this.coverageLimit()),
+      commissionRate: Number(this.commissionRate()),
+      features: this.featuresText() ? this.featuresText().split(',').map(s => s.trim()).filter(s => s) : [],
+      exclusions: this.exclusionsText() ? this.exclusionsText().split(',').map(s => s.trim()).filter(s => s) : []
+    }).subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.showPlanForm.set(false);
+          this.tierName.set('Basic');
+          this.basePremium.set(0);
+          this.coverageLimit.set(0);
+          this.commissionRate.set(0);
+          this.featuresText.set('');
+          this.exclusionsText.set('');
+          this.selectType(this.selectedType()!); // refresh plans
+        }
+      },
+      error: (err) => {
+        console.error("Failed to add plan", err);
+        alert("Failed to add plan: " + (err.error?.message || "Bad Request. Make sure all numbers are valid."));
+      }
+    });
+  }
 }

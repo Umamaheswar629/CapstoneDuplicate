@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.Billing
+namespace Application.DTOs.Billing;
+
+public class GenerateEmiRequest
 {
-    public class GenerateEmiRequest
-    {
-    }
+    [Required]
+    public int PolicyId { get; set; }
+
+    [Required]
+    [Range(2, 12)]
+    public int NumberOfMonths { get; set; }
 }

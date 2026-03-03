@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Enmus
+﻿namespace Domain.Enmus
 {
-    public class PolicyStatus
+    public enum PolicyStatus
     {
+        Active = 1,
+        Expired = 2,
+        Cancelled = 3,
+        PendingRenewal = 4,
+        PendingApproval = 5
     }
 }

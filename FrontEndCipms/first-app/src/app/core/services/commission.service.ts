@@ -22,6 +22,6 @@ export class CommissionService {
     }
 
     getAgentPerformance(): Observable<ApiResponse<AgentPerformanceDto[]>> {
-        return this.http.get<ApiResponse<AgentPerformanceDto[]>>(`${this.API_URL}/agent-performance`);
+        return this.http.get<ApiResponse<AgentPerformanceDto[]>>(`${this.API_URL}/performance`);
     }
 }

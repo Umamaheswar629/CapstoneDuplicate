@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
     selector: 'app-badge',
     standalone: true,
     imports: [CommonModule],
-        templateUrl: './badge.component.html'
+    templateUrl: './badge.component.html'
 })
 export class BadgeComponent implements OnChanges {
     @Input() status: string = '';
@@ -26,7 +26,7 @@ export class BadgeComponent implements OnChanges {
         if (['cancelled', 'rejected'].includes(s)) {
             return 'bg-red-100 text-red-800';
         }
-        if (['pending', 'submitted'].includes(s)) {
+        if (['pending', 'submitted', 'pendingapproval', 'pendingrenewal'].includes(s.replace(/\s+/g, ''))) {
             return 'bg-yellow-100 text-yellow-800';
         }
         if (['underreview'].includes(s.replace(/\s+/g, ''))) {

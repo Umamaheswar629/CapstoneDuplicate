@@ -31,6 +31,7 @@ export interface RecordPaymentRequest {
 
 export interface GenerateEmiRequest {
     policyId: number | string;
+    invoiceId?: number | string;
     numberOfMonths: number;
 }
 

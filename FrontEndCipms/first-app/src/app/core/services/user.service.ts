@@ -37,6 +37,6 @@ export class UserService {
     }
 
     toggleStatus(id: number | string): Observable<ApiResponse<boolean>> {
-        return this.http.put<ApiResponse<boolean>>(`${this.API_URL}/${id}/toggle-status`, {});
+        return this.http.patch<ApiResponse<boolean>>(`${this.API_URL}/${id}/toggle-status`, {});
     }
 }

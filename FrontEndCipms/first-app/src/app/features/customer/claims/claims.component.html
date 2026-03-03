@@ -129,6 +129,17 @@
                         placeholder="Provide a detailed account of the incident (minimum 20 characters)..."></textarea>
                     <p class="mt-1 text-xs text-gray-500">{{ description().length }}/20 characters minimum</p>
                 </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700">Supporting Evidence / Documents</label>
+                    <div class="mt-1 flex items-center">
+                        <input id="claim-document" type="file" (change)="onFileSelected($event)"
+                            accept="image/*,.pdf,.doc,.docx"
+                            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                    </div>
+                    <p class="mt-1 text-xs text-gray-500">Upload any photos or reports (PDF/JPG) supporting your claim.
+                    </p>
+                </div>
             </div>
 
             <div class="pt-4 border-t border-gray-100 flex justify-end">

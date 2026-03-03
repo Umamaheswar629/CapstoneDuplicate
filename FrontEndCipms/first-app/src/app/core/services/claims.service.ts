@@ -10,7 +10,7 @@ import { PagedResult } from '../models/user.model';
 })
 export class ClaimsService {
     private http = inject(HttpClient);
-    private readonly API_URL = 'https://localhost:7207/api/claims';
+    private readonly API_URL = 'https://localhost:7207/api/Claims';
 
     createClaim(req: CreateClaimRequest): Observable<ApiResponse<ClaimDto>> {
         return this.http.post<ApiResponse<ClaimDto>>(this.API_URL, req);
@@ -31,10 +31,16 @@ export class ClaimsService {
     }
 
     assignOfficer(req: AssignOfficerRequest): Observable<ApiResponse<ClaimDto>> {
-        return this.http.put<ApiResponse<ClaimDto>>(`${this.API_URL}/assign`, req);
+        return this.http.post<ApiResponse<ClaimDto>>(`${this.API_URL}/assign-officer`, req);
     }
 
     processDecision(req: ClaimDecisionRequest): Observable<ApiResponse<ClaimDto>> {
-        return this.http.put<ApiResponse<ClaimDto>>(`${this.API_URL}/decision`, req);
+        return this.http.post<ApiResponse<ClaimDto>>(`${this.API_URL}/decision`, req);
+    }
+
+    uploadClaimDocument(claimId: number, file: File): Observable<ApiResponse<any>> {
+        const formData = new FormData();
+        formData.append('file', file);
+        return this.http.post<ApiResponse<any>>(`${this.API_URL}/${claimId}/documents`, formData);
     }
 }

@@ -18,14 +18,21 @@ export class TokenService {
         localStorage.removeItem(this.TOKEN_KEY);
     }
 
-    getUserFromToken(): { userId: string | number, fullName: string, email: string, role: string } | null {
+    getUserFromToken(): any | null {
         const token = this.getToken();
         if (!token) return null;
 
         try {
             const payload = token.split('.')[1];
             const decoded = atob(payload);
-            return JSON.parse(decoded);
+            const parsed = JSON.parse(decoded);
+
+            return {
+                userId: parsed.userId || parsed.sub || parsed.nameid,
+                fullName: parsed.fullName || parsed.name || parsed['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+                email: parsed.email || parsed['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
+                role: parsed.role || parsed['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+            };
         } catch (e) {
             return null;
         }

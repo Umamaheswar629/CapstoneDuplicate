@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.Quote
+namespace Application.DTOs.Quote;
+
+public class QuoteRequest
 {
-    public class QuoteRequest
-    {
-    }
+    [Required]
+    public int PlanId { get; set; }
+
+    [Required]
+    public int BusinessProfileId { get; set; }
 }
