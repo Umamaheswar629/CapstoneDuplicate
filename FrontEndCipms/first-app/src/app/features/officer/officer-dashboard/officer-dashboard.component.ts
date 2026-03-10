@@ -26,9 +26,9 @@ export class OfficerDashboardComponent implements OnInit {
   approvedCount = computed(() => this.claims().filter(c => c.status === 'Approved' || c.status === 'Settled').length);
   rejectedCount = computed(() => this.claims().filter(c => c.status === 'Rejected').length);
 
-  // Computed signal to sort claims oldest first
+  // Computed signal to sort claims newest first
   sortedClaims = computed(() => {
-    return [...this.claims()].sort((a, b) => new Date(a.filedAt).getTime() - new Date(b.filedAt).getTime());
+    return [...this.claims()].sort((a, b) => new Date(b.filedAt).getTime() - new Date(a.filedAt).getTime());
   });
 
   ngOnInit() {

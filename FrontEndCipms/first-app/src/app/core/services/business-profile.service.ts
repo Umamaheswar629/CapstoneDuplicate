@@ -22,4 +22,10 @@ export class BusinessProfileService {
     update(req: UpdateBusinessProfileRequest): Observable<ApiResponse<BusinessProfileDto>> {
         return this.http.put<ApiResponse<BusinessProfileDto>>(this.API_URL, req);
     }
+
+    uploadCertificate(file: File): Observable<ApiResponse<string>> {
+        const formData = new FormData();
+        formData.append('file', file);
+        return this.http.post<ApiResponse<string>>(`${this.API_URL}/upload-certificate`, formData);
+    }
 }

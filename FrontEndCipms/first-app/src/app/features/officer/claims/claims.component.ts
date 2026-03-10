@@ -40,6 +40,7 @@ export class OfficerClaimsComponent implements OnInit {
 
   successMsg = signal('');
   errorMsg = signal('');
+  downloadingDocs = signal<Set<number | string>>(new Set());
 
   statusOptions = [
     { label: 'All', value: '' },
@@ -70,8 +71,8 @@ export class OfficerClaimsComponent implements OnInit {
 
   // Helper purely for UI
   sortedClaims() {
-    // Ensuring oldest first if backend didn't sort correctly
-    return [...this.claims()].sort((a, b) => new Date(a.filedAt).getTime() - new Date(b.filedAt).getTime());
+    // Ensuring newest first if backend didn't sort correctly
+    return [...this.claims()].sort((a, b) => new Date(b.filedAt).getTime() - new Date(a.filedAt).getTime());
   }
 
   loadClaims(page: number, status: string) {
@@ -147,6 +148,45 @@ export class OfficerClaimsComponent implements OnInit {
       error: (err: any) => {
         this.decisionLoading.set(false);
         this.errorMsg.set(err.error?.message || 'Server error occurred');
+      }
+    });
+  }
+
+  downloadDocument(doc: any) {
+    const claim = this.selectedClaim();
+    if (!claim) return;
+
+    this.downloadingDocs.update(s => {
+      const newSet = new Set(s);
+      newSet.add(doc.documentId);
+      return newSet;
+    });
+
+    this.claimsService.downloadClaimDocument(claim.claimId, doc.documentId).subscribe({
+      next: (blob: Blob) => {
+        this.downloadingDocs.update(s => {
+          const newSet = new Set(s);
+          newSet.delete(doc.documentId);
+          return newSet;
+        });
+
+        // Create object URL and download
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = doc.fileName;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      },
+      error: () => {
+        this.downloadingDocs.update(s => {
+          const newSet = new Set(s);
+          newSet.delete(doc.documentId);
+          return newSet;
+        });
+        this.errorMsg.set('Failed to download document. Please try again.');
       }
     });
   }

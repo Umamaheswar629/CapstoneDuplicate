@@ -9,5 +9,6 @@ public class BusinessProfileDto
     public int EmployeeCount { get; set; }
     public decimal AnnualRevenue { get; set; }
     public string Location { get; set; } = string.Empty;
-    public int PriorClaimsCount { get; set; }
+    public bool HasSafetyCertification { get; set; }
+    public string? SafetyCertificatePath { get; set; }
 }

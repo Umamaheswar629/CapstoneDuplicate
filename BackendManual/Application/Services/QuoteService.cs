@@ -90,9 +90,9 @@ public class QuoteService : IQuoteService
         if (profile.EmployeeCount > 500) { score += 10; breakdown["Employee Count"] = 10; }
         else if (profile.EmployeeCount > 100) { score += 5; breakdown["Employee Count"] = 5; }
 
-        // Prior claims
-        var claimImpact = profile.PriorClaimsCount * 5;
-        if (claimImpact > 0) { score += claimImpact; breakdown["Prior Claims"] = claimImpact; }
+        // Safety certification
+        if (profile.HasSafetyCertification) { score -= 10; breakdown["Safety Certification"] = -10; }
+        else { score += 10; breakdown["No Safety Certification"] = 10; }
 
         // Revenue factor
         if (profile.AnnualRevenue > 10_000_000) { score += 5; breakdown["Annual Revenue"] = 5; }

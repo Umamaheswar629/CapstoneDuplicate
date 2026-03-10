@@ -41,15 +41,6 @@
             {{ unreadCount() }}
           </span>
         </a>
-        <a routerLink="/customer/error-log" routerLinkActive="bg-blue-700 text-white"
-          class="group flex items-center px-4 py-3 text-sm font-medium rounded-md text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
-          <span class="flex-1">Error Log</span>
-          @if (errorLogService.errorCount() > 0) {
-          <span class="bg-red-500 text-white py-0.5 px-2 rounded-full text-xs font-bold">
-            {{ errorLogService.errorCount() }}
-          </span>
-          }
-        </a>
       </nav>
     </div>
   </div>

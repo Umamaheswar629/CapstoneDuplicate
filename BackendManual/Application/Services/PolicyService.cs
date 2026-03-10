@@ -108,7 +108,7 @@ public class PolicyService : IPolicyService
             Status = status.ToString(),
             CreatedAt = policy.CreatedAt,
             CanRenew = status == PolicyStatus.Expired || status == PolicyStatus.PendingRenewal,
-            CanCancel = status == PolicyStatus.Active,
+            CanCancel = status == PolicyStatus.Active || status == PolicyStatus.PaymentPending,
             Features = ParseFeatures(plan?.Features),
             Invoices = policy.Invoices?.Select(inv => new InvoiceDto
             {
@@ -285,8 +285,8 @@ public class PolicyService : IPolicyService
         if (!policy.AgentId.HasValue)
             policy.AgentId = agentUserId;
 
-        // Activate the policy
-        policy.Status = (int)PolicyStatus.Active;
+        // Set policy to PaymentPending (will become Active after customer pays)
+        policy.Status = (int)PolicyStatus.PaymentPending;
 
         // Create the invoice now
         var invoice = new Invoice
@@ -300,17 +300,8 @@ public class PolicyService : IPolicyService
         };
         await _policyRepo.AddInvoiceAsync(invoice);
 
-        // Create commission for the agent
-        var commissionRate = 10.0m;
-        var commission = new Commission
-        {
-            AgentId = policy.AgentId.Value,
-            PolicyId = policy.Id,
-            CommissionRate = commissionRate,
-            CommissionAmount = policy.PremiumAmount * (commissionRate / 100m),
-            EarnedAt = DateTime.UtcNow
-        };
-        await _policyRepo.AddCommissionAsync(commission);
+        // NOTE: Commission is NOT created here.
+        // It will be created when the customer completes payment (in BillingService).
 
         await _policyRepo.SaveChangesAsync();
 
@@ -318,8 +309,8 @@ public class PolicyService : IPolicyService
         var notification = new Notification
         {
             UserId = policy.CustomerId,
-            Title = "Policy Approved",
-            Message = $"Your policy {policy.PolicyNumber} has been approved by an agent and is now active.",
+            Title = "Policy Approved — Payment Required",
+            Message = $"Your policy {policy.PolicyNumber} has been approved by an agent and is awaiting payment. Please complete payment to activate your policy.",
             IsRead = false,
             CreatedAt = DateTime.UtcNow
         };
@@ -330,7 +321,7 @@ public class PolicyService : IPolicyService
         var fullPolicy = await _policyRepo.GetByIdWithFullDetailsAsync(policy.Id);
         var plan = fullPolicy?.Quote?.Plan;
 
-        return ApiResponse<PolicyDto>.SuccessResponse(MapPolicyToDto(fullPolicy ?? policy, plan), "Policy approved and activated successfully.");
+        return ApiResponse<PolicyDto>.SuccessResponse(MapPolicyToDto(fullPolicy ?? policy, plan), "Policy approved. Awaiting customer payment.");
     }
 
     private static PolicyDto MapPolicyToDto(Policy p, Plan? plan)

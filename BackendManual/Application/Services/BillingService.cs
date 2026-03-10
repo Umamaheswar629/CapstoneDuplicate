@@ -92,6 +92,50 @@ public class BillingService : IBillingService
         {
             invoice.Status = (int)PaymentStatus.Paid;
             invoice.PaidDate = DateTime.UtcNow;
+
+            // If the policy was awaiting payment, activate it and create agent commission
+            var policy = invoice.Policy;
+            if (policy != null && policy.Status == (int)PolicyStatus.PaymentPending)
+            {
+                policy.Status = (int)PolicyStatus.Active;
+
+                // Create commission for the agent
+                if (policy.AgentId.HasValue)
+                {
+                    var commissionRate = 10.0m;
+                    var commission = new Commission
+                    {
+                        AgentId = policy.AgentId.Value,
+                        PolicyId = policy.Id,
+                        CommissionRate = commissionRate,
+                        CommissionAmount = policy.PremiumAmount * (commissionRate / 100m),
+                        EarnedAt = DateTime.UtcNow
+                    };
+                    await _billingRepo.AddCommissionAsync(commission);
+
+                    // Notify agent about commission earned
+                    var agentNotification = new Notification
+                    {
+                        UserId = policy.AgentId.Value,
+                        Title = "Commission Earned",
+                        Message = $"You earned a commission of ₹{commission.CommissionAmount:N2} for policy {policy.PolicyNumber}.",
+                        IsRead = false,
+                        CreatedAt = DateTime.UtcNow
+                    };
+                    await _billingRepo.AddNotificationAsync(agentNotification);
+                }
+
+                // Notify customer that policy is now active
+                var customerNotification = new Notification
+                {
+                    UserId = policy.CustomerId,
+                    Title = "Policy Activated",
+                    Message = $"Your payment has been received. Policy {policy.PolicyNumber} is now active.",
+                    IsRead = false,
+                    CreatedAt = DateTime.UtcNow
+                };
+                await _billingRepo.AddNotificationAsync(customerNotification);
+            }
         }
 
         await _billingRepo.SaveChangesAsync();

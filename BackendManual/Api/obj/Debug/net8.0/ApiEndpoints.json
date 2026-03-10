@@ -713,6 +713,22 @@
   },
   {
     "ContainingType": "API.Controllers.PoliciesController",
+    "Method": "ApprovePolicy",
+    "RelativePath": "api/Policies/{id}/approve",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.PoliciesController",
     "Method": "CancelPolicy",
     "RelativePath": "api/Policies/cancel",
     "HttpMethod": "POST",

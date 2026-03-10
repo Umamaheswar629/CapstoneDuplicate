@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { NotificationService } from '../../core/services/notification.service';
-import { ErrorLogService } from '../../core/services/error-log.service';
 
 @Component({
   selector: 'app-customer-layout',
@@ -17,7 +16,6 @@ import { ErrorLogService } from '../../core/services/error-log.service';
 export class CustomerLayoutComponent implements OnInit, OnDestroy {
   authService = inject(AuthService);
   notificationService = inject(NotificationService);
-  errorLogService = inject(ErrorLogService);
 
   sidebarOpen = signal(true);
   currentUser = this.authService.currentUser;

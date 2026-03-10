@@ -25,7 +25,7 @@ public class ClaimsRepository : IClaimsRepository
     public async Task<Claim?> GetByIdWithFullDetailsAsync(int claimId)
     {
         return await _context.Claims
-            .Include(c => c.Customer)
+            .Include(c => c.Customer).ThenInclude(u => u!.BusinessProfile)
             .Include(c => c.Officer)
             .Include(c => c.Policy).ThenInclude(p => p!.Quote).ThenInclude(q => q!.Plan).ThenInclude(pl => pl!.InsuranceType)
             .Include(c => c.Documents)
@@ -38,7 +38,7 @@ public class ClaimsRepository : IClaimsRepository
         int page, int pageSize)
     {
         var query = _context.Claims
-            .Include(c => c.Customer)
+            .Include(c => c.Customer).ThenInclude(u => u!.BusinessProfile)
             .Include(c => c.Officer)
             .Include(c => c.Policy).ThenInclude(p => p!.Quote).ThenInclude(q => q!.Plan).ThenInclude(pl => pl!.InsuranceType)
             .Include(c => c.Documents)

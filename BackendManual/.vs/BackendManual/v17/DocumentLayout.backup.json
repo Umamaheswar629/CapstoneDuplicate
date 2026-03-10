@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\filters\\validationactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\filters\\validationactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\policyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\policyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\middleware\\requestloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\middleware\\requestloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\quoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\quoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\businessprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\businessprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\controllers\\businessprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\controllers\\businessprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\controllers\\quotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\controllers\\quotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\interfaces\\iappdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,16 +55,8 @@
       "RelativeMoniker": "D:0:0:{A97ABA69-4959-47D3-8D3F-51971E026297}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\implementations\\commissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A97ABA69-4959-47D3-8D3F-51971E026297}|Infrastructure\\Infrastructure.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\infrastructure\\repositories\\implementations\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A97ABA69-4959-47D3-8D3F-51971E026297}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\implementations\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A97ABA69-4959-47D3-8D3F-51971E026297}|Infrastructure\\Infrastructure.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\infrastructure\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A97ABA69-4959-47D3-8D3F-51971E026297}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\api\\controllers\\businessprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2044D93E-3BB5-45F1-85CA-BC9DC68A703C}|Api\\Api.csproj|solutionrelative:api\\controllers\\businessprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A97ABA69-4959-47D3-8D3F-51971E026297}|Infrastructure\\Infrastructure.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\infrastructure\\repositories\\implementations\\policyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,20 +123,8 @@
       "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\billingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\policyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\policyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\quoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\quoteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\insuranceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\insuranceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\businessprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\services\\businessprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -169,10 +157,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\interfaces\\ibillingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\interfaces\\ibillingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\interfaces\\ibusinessprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|solutionrelative:application\\interfaces\\ibusinessprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ADA83331-8409-46BA-B42C-409BE5C84D9F}|Application\\Application.csproj|c:\\users\\umama\\onedrive\\desktop\\capstonepersonal\\backendmanual\\application\\interfaces\\ipolicyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -226,7 +210,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -238,24 +222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IAppDbContext.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\IAppDbContext.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IAppDbContext.cs",
-              "RelativeToolTip": "Application\\Interfaces\\IAppDbContext.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAywAUAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T13:39:29.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 49,
               "Title": "UnitTest1.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application.Tests\\UnitTest1.cs",
               "RelativeDocumentMoniker": "Application.Tests\\UnitTest1.cs",
@@ -267,46 +234,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ExceptionHandlingMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "RelativeDocumentMoniker": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "RelativeToolTip": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "IAppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IAppDbContext.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IAppDbContext.cs",
+              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IAppDbContext.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IAppDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAywAUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T12:23:49.911Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T13:39:29.41Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RequestLoggingMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Middleware\\RequestLoggingMiddleware.cs",
-              "RelativeDocumentMoniker": "Api\\Middleware\\RequestLoggingMiddleware.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Middleware\\RequestLoggingMiddleware.cs",
-              "RelativeToolTip": "Api\\Middleware\\RequestLoggingMiddleware.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T12:24:35.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ValidationActionFilter.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Filters\\ValidationActionFilter.cs",
-              "RelativeDocumentMoniker": "Api\\Filters\\ValidationActionFilter.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Filters\\ValidationActionFilter.cs",
-              "RelativeToolTip": "Api\\Filters\\ValidationActionFilter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T12:25:28.411Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ApiResponse.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\DTOs\\Common\\ApiResponse.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Common\\ApiResponse.cs",
@@ -318,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "PagedResult.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\DTOs\\Common\\PagedResult.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Common\\PagedResult.cs",
@@ -330,7 +270,86 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
+              "Title": "QuoteService.cs",
+              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\QuoteService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\QuoteService.cs",
+              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\QuoteService.cs",
+              "RelativeToolTip": "Application\\Services\\QuoteService.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAqwF0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T09:08:07.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\appsettings.json",
+              "RelativeDocumentMoniker": "Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\appsettings.json",
+              "RelativeToolTip": "Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-02T16:23:01.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PolicyService.cs",
+              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\PolicyService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\PolicyService.cs",
+              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\PolicyService.cs",
+              "RelativeToolTip": "Application\\Services\\PolicyService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T09:08:27.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BusinessProfileService.cs",
+              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\BusinessProfileService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\BusinessProfileService.cs",
+              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\BusinessProfileService.cs",
+              "RelativeToolTip": "Application\\Services\\BusinessProfileService.cs",
+              "ViewState": "AgIAABYAAAAAzvj4LCQYwB8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T09:07:13.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BusinessProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Controllers\\BusinessProfileController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\BusinessProfileController.cs",
+              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Controllers\\BusinessProfileController.cs",
+              "RelativeToolTip": "Api\\Controllers\\BusinessProfileController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwB4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T13:41:06.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "QuotesController.cs",
+              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Controllers\\QuotesController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\QuotesController.cs",
+              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Controllers\\QuotesController.cs",
+              "RelativeToolTip": "Api\\Controllers\\QuotesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T10:30:06.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ClaimsRepository.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Infrastructure\\Repositories\\Implementations\\ClaimsRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\Implementations\\ClaimsRepository.cs",
@@ -342,7 +361,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "CommissionRepository.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Infrastructure\\Repositories\\Implementations\\CommissionRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\Implementations\\CommissionRepository.cs",
@@ -354,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 48,
               "Title": "UnitTest1.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Domain.Tests\\UnitTest1.cs",
               "RelativeDocumentMoniker": "Domain.Tests\\UnitTest1.cs",
@@ -366,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Application.csproj",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Application.csproj",
               "RelativeDocumentMoniker": "Application\\Application.csproj",
@@ -378,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "AnalyticsController.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Controllers\\AnalyticsController.cs",
               "RelativeDocumentMoniker": "Api\\Controllers\\AnalyticsController.cs",
@@ -390,31 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\appsettings.json",
-              "RelativeDocumentMoniker": "Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\appsettings.json",
-              "RelativeToolTip": "Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-02T16:23:01.973Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "BusinessProfileController.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Controllers\\BusinessProfileController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\BusinessProfileController.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Controllers\\BusinessProfileController.cs",
-              "RelativeToolTip": "Api\\Controllers\\BusinessProfileController.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAACcAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T13:41:06.758Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "AppDbContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
@@ -423,18 +418,6 @@
               "ViewState": "AgIAAC0AAAAAAAAAAAAowA0AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T13:44:43.098Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Infrastructure\\Repositories\\Implementations\\GenericRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\Implementations\\GenericRepository.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Infrastructure\\Repositories\\Implementations\\GenericRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Repositories\\Implementations\\GenericRepository.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAACwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T10:18:34.722Z"
             },
             {
               "$type": "Document",
@@ -631,30 +614,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 30,
-              "Title": "PolicyService.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\PolicyService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\PolicyService.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\PolicyService.cs",
-              "RelativeToolTip": "Application\\Services\\PolicyService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:08:27.773Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "QuoteService.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\QuoteService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\QuoteService.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\QuoteService.cs",
-              "RelativeToolTip": "Application\\Services\\QuoteService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:08:07.954Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
               "Title": "InsuranceService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\InsuranceService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\InsuranceService.cs",
@@ -666,19 +625,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "BusinessProfileService.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\BusinessProfileService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\BusinessProfileService.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\BusinessProfileService.cs",
-              "RelativeToolTip": "Application\\Services\\BusinessProfileService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:07:13.628Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 31,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\UserService.cs",
@@ -690,7 +637,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 32,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AuthService.cs",
@@ -702,7 +649,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 33,
               "Title": "INotificationService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\INotificationService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\INotificationService.cs",
@@ -714,7 +661,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 34,
               "Title": "IEmailService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IEmailService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IEmailService.cs",
@@ -726,7 +673,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 35,
               "Title": "IAnalyticsService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IAnalyticsService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IAnalyticsService.cs",
@@ -738,7 +685,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 36,
               "Title": "ICommissionService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\ICommissionService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\ICommissionService.cs",
@@ -750,7 +697,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 37,
               "Title": "IClaimService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IClaimService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IClaimService.cs",
@@ -762,7 +709,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 38,
               "Title": "IBillingService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IBillingService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IBillingService.cs",
@@ -774,7 +721,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 39,
               "Title": "IPolicyService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IPolicyService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IPolicyService.cs",
@@ -786,19 +733,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "IBusinessProfileService.cs",
-              "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IBusinessProfileService.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\IBusinessProfileService.cs",
-              "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IBusinessProfileService.cs",
-              "RelativeToolTip": "Application\\Interfaces\\IBusinessProfileService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:00:16.436Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 40,
               "Title": "IQuoteService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IQuoteService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IQuoteService.cs",
@@ -810,7 +745,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 41,
               "Title": "IInsuranceService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IInsuranceService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IInsuranceService.cs",
@@ -822,7 +757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 42,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Interfaces\\IUserService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IUserService.cs",
@@ -834,7 +769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 44,
               "Title": "ServiceExtensions.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Extensions\\ServiceExtensions.cs",
               "RelativeDocumentMoniker": "Api\\Extensions\\ServiceExtensions.cs",
@@ -846,7 +781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 43,
               "Title": "Api.csproj",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Api\\Api.csproj",
               "RelativeDocumentMoniker": "Api\\Api.csproj",
@@ -858,7 +793,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 47,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Infrastructure\\Class1.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Class1.cs",
@@ -870,7 +805,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 46,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Class1.cs",
               "RelativeDocumentMoniker": "Application\\Class1.cs",
@@ -882,7 +817,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 45,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Domain\\Class1.cs",
               "RelativeDocumentMoniker": "Domain\\Class1.cs",

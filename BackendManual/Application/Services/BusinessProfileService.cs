@@ -29,7 +29,7 @@ public class BusinessProfileService : IBusinessProfileService
             return ApiResponse<BusinessProfileDto>.FailResponse("Business profile already exists.");
 
         var profile = new BusinessProfile
-        {
+        {   
             UserId = userId,
             BusinessName = request.BusinessName,
             IndustryType = request.IndustryType,
@@ -37,7 +37,8 @@ public class BusinessProfileService : IBusinessProfileService
             EmployeeCount = request.EmployeeCount,
             AnnualRevenue = request.AnnualRevenue,
             Location = request.Location,
-            PriorClaimsCount = request.PriorClaimsCount,
+            HasSafetyCertification = request.HasSafetyCertification,
+            SafetyCertificatePath = request.SafetyCertificatePath,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -59,7 +60,9 @@ public class BusinessProfileService : IBusinessProfileService
         profile.EmployeeCount = request.EmployeeCount;
         profile.AnnualRevenue = request.AnnualRevenue;
         profile.Location = request.Location;
-        profile.PriorClaimsCount = request.PriorClaimsCount;
+        profile.HasSafetyCertification = request.HasSafetyCertification;
+        if (!string.IsNullOrEmpty(request.SafetyCertificatePath))
+            profile.SafetyCertificatePath = request.SafetyCertificatePath;
 
         await _repo.SaveChangesAsync();
 
@@ -75,6 +78,7 @@ public class BusinessProfileService : IBusinessProfileService
         EmployeeCount = p.EmployeeCount,
         AnnualRevenue = p.AnnualRevenue,
         Location = p.Location,
-        PriorClaimsCount = p.PriorClaimsCount
+        HasSafetyCertification = p.HasSafetyCertification,
+        SafetyCertificatePath = p.SafetyCertificatePath
     };
 }

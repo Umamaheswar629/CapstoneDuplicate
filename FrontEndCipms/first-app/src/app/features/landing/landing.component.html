@@ -17,7 +17,6 @@
 
         <div class="hidden md:flex items-center space-x-8 text-sm font-semibold">
           <a href="#features" class="text-slate-600 hover:text-slate-900 transition-colors">Platform</a>
-          <a href="#coverage" class="text-slate-600 hover:text-slate-900 transition-colors">Coverage</a>
           <a href="#analytics" class="text-slate-600 hover:text-slate-900 transition-colors">Growth</a>
           <a href="#pricing" class="text-slate-600 hover:text-slate-900 transition-colors">Pricing</a>
         </div>
@@ -205,35 +204,8 @@
         </div>
 
         <!-- Graph UI Representation -->
-        <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-2xl">
-          <div class="flex justify-between items-center mb-8 border-b border-slate-700 pb-4">
-            <h4 class="font-bold text-slate-200">Revenue Growth (YTD)</h4>
-            <span class="text-emerald-400 text-sm font-bold bg-emerald-400/10 px-2 py-1 rounded">+84%</span>
-          </div>
-          <div class="flex items-end justify-between h-48 gap-3">
-            <!-- CSS Bar Graph -->
-            <div class="w-full bg-slate-700 rounded-t-sm relative group">
-              <div class="absolute bottom-0 w-full bg-blue-500 transition-all h-[30%]"></div>
-            </div>
-            <div class="w-full bg-slate-700 rounded-t-sm relative group">
-              <div class="absolute bottom-0 w-full bg-blue-500 transition-all h-[45%]"></div>
-            </div>
-            <div class="w-full bg-slate-700 rounded-t-sm relative group">
-              <div class="absolute bottom-0 w-full bg-blue-500 transition-all h-[40%]"></div>
-            </div>
-            <div class="w-full bg-slate-700 rounded-t-sm relative group">
-              <div class="absolute bottom-0 w-full bg-blue-500 transition-all h-[60%]"></div>
-            </div>
-            <div class="w-full bg-slate-700 rounded-t-sm relative group">
-              <div class="absolute bottom-0 w-full bg-blue-500 transition-all h-[75%]"></div>
-            </div>
-            <div class="w-full bg-slate-700 rounded-t-sm relative group">
-              <div class="absolute bottom-0 w-full bg-indigo-500 transition-all h-[95%]"></div>
-            </div>
-          </div>
-          <div class="flex justify-between mt-3 text-xs text-slate-400 border-t border-slate-700 pt-3">
-            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
-          </div>
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+          <img src="assets/revenue_growth_chart.png" alt="Revenue Growth Dashboard" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity">
         </div>
       </div>
     </div>
@@ -247,9 +219,7 @@
           <h2 class="text-3xl font-bold text-slate-900 mb-2">General Liability Insurance Plans</h2>
           <p class="text-slate-500">Covers third-party bodily injury and property damage claims.</p>
         </div>
-        <button
-          class="bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded shadow-sm text-sm font-bold hovering:bg-slate-50">+
-          Add Plan</button>
+
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

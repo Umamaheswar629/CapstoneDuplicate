@@ -294,9 +294,11 @@ export class BillingComponent implements OnInit {
         if (res.success) {
           this.showPayModal.set(false);
           this.successMsg.set('Payment processed successfully. Thank you!');
-          // Refresh data
-          this.billingService.getBillingDashboard().subscribe((d: any) => { if (d.success) this.dashboard.set(d.data!); });
-          this.loadInvoices(this.selectedPolicyId());
+          // Refresh data: fetch dashboard first, then load invoices to avoid race condition
+          this.billingService.getBillingDashboard().subscribe((d: any) => { 
+            if (d.success) this.dashboard.set(d.data!); 
+            this.loadInvoices(this.selectedPolicyId());
+          });
         }
       },
       error: () => this.actionLoading.set(false)
@@ -319,7 +321,11 @@ export class BillingComponent implements OnInit {
         if (res.success) {
           this.showEmiModal.set(false);
           this.successMsg.set('Invoice successfully converted to EMI instalments.');
-          this.loadInvoices(this.selectedPolicyId()); // Refresh list to see EMI breakdown
+          // Refresh data to show new EMIs
+          this.billingService.getBillingDashboard().subscribe((d: any) => { 
+            if (d.success) this.dashboard.set(d.data!); 
+            this.loadInvoices(this.selectedPolicyId());
+          });
         } else {
           console.error('Backend returned 200 but success=false:', res);
           this.successMsg.set('');

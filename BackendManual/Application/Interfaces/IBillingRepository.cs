@@ -15,5 +15,7 @@ public interface IBillingRepository
     Task AddPaymentAsync(Payment payment);
     Task AddInvoicesAsync(IEnumerable<Invoice> invoices);
     Task RemoveInvoiceAsync(Invoice invoice);
+    Task AddCommissionAsync(Commission commission);
+    Task AddNotificationAsync(Notification notification);
     Task SaveChangesAsync();
 }

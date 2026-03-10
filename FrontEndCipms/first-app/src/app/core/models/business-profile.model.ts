@@ -7,7 +7,8 @@ export interface BusinessProfileDto {
     annualRevenue: number;
     yearsInOperation: number;
     location: string;
-    priorClaimsCount: number;
+    hasSafetyCertification: boolean;
+    safetyCertificatePath?: string;
     createdAt: string | Date;
 }
 
@@ -18,7 +19,7 @@ export interface CreateBusinessProfileRequest {
     annualRevenue: number;
     yearsInOperation: number;
     location: string;
-    priorClaimsCount: number;
+    hasSafetyCertification: boolean;
 }
 
 export interface UpdateBusinessProfileRequest {
@@ -28,5 +29,5 @@ export interface UpdateBusinessProfileRequest {
     annualRevenue?: number;
     yearsInOperation?: number;
     location?: string;
-    priorClaimsCount?: number;
+    hasSafetyCertification?: boolean;
 }

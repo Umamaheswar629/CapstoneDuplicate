@@ -43,4 +43,10 @@ export class ClaimsService {
         formData.append('file', file);
         return this.http.post<ApiResponse<any>>(`${this.API_URL}/${claimId}/documents`, formData);
     }
+
+    downloadClaimDocument(claimId: number | string, documentId: number | string): Observable<Blob> {
+        return this.http.get(`${this.API_URL}/${claimId}/documents/${documentId}`, {
+            responseType: 'blob'
+        });
+    }
 }

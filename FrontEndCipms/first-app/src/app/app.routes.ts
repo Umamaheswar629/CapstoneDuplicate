@@ -33,7 +33,6 @@ export const routes: Routes = [
             { path: 'billing', loadComponent: () => import('./features/customer/billing/billing.component').then(c => c.BillingComponent) },
             { path: 'claims', loadComponent: () => import('./features/customer/claims/claims.component').then(c => c.ClaimsComponent) },
             { path: 'notifications', loadComponent: () => import('./features/customer/notifications/notifications.component').then(c => c.NotificationsComponent) },
-            { path: 'error-log', loadComponent: () => import('./shared/components/error-log.component').then(c => c.ErrorLogComponent) },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
     },
@@ -47,7 +46,6 @@ export const routes: Routes = [
             { path: 'policies', loadComponent: () => import('./features/agent/agent-policies/agent-policies.component').then(c => c.AgentPoliciesComponent) },
             { path: 'commissions', loadComponent: () => import('./features/agent/agent-commissions/agent-commissions.component').then(c => c.AgentCommissionsComponent) },
             { path: 'notifications', loadComponent: () => import('./features/customer/notifications/notifications.component').then(c => c.NotificationsComponent) },
-            { path: 'error-log', loadComponent: () => import('./shared/components/error-log.component').then(c => c.ErrorLogComponent) },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
     },
@@ -60,7 +58,6 @@ export const routes: Routes = [
             { path: 'dashboard', loadComponent: () => import('./features/officer/officer-dashboard/officer-dashboard.component').then(c => c.OfficerDashboardComponent) },
             { path: 'claims', loadComponent: () => import('./features/officer/claims/claims.component').then(c => c.OfficerClaimsComponent) },
             { path: 'notifications', loadComponent: () => import('./features/customer/notifications/notifications.component').then(c => c.NotificationsComponent) },
-            { path: 'error-log', loadComponent: () => import('./shared/components/error-log.component').then(c => c.ErrorLogComponent) },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
     },

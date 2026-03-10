@@ -127,14 +127,9 @@ import { AuthService } from '../../../core/services/auth.service';
               </div>
             </div>
 
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-slate-300 rounded">
-                <label for="remember-me" class="ml-2 block text-sm text-slate-700">Remember me</label>
-              </div>
-              <div class="text-sm">
-                <a href="#" class="font-semibold text-blue-600 hover:text-blue-500">Forgot password?</a>
-              </div>
+            <div class="flex items-center">
+              <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-slate-300 rounded">
+              <label for="remember-me" class="ml-2 block text-sm text-slate-700">Remember me</label>
             </div>
 
             <button type="submit" [disabled]="loading() || !email() || !password() || captchaAnswer() === null"

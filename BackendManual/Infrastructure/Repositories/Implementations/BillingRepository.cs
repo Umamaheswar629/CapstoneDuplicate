@@ -83,6 +83,16 @@ public class BillingRepository : IBillingRepository
         _context.Invoices.Remove(invoice);
     }
 
+    public async Task AddCommissionAsync(Commission commission)
+    {
+        await _context.Commissions.AddAsync(commission);
+    }
+
+    public async Task AddNotificationAsync(Notification notification)
+    {
+        await _context.Notifications.AddAsync(notification);
+    }
+
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();

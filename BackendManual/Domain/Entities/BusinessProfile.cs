@@ -12,7 +12,8 @@ namespace Domain.Entities
         public int EmployeeCount { get; set; }
         public decimal AnnualRevenue { get; set; }
         public string Location { get; set; } = string.Empty;
-        public int PriorClaimsCount { get; set; }
+        public bool HasSafetyCertification { get; set; }
+        public string? SafetyCertificatePath { get; set; }
         public DateTime CreatedAt { get; set; }
         public int UserId { get; set; }
         

@@ -26,6 +26,9 @@ export class BadgeComponent implements OnChanges {
         if (['cancelled', 'rejected'].includes(s)) {
             return 'bg-red-100 text-red-800';
         }
+        if (['paymentpending'].includes(s.replace(/\s+/g, ''))) {
+            return 'bg-orange-100 text-orange-800';
+        }
         if (['pending', 'submitted', 'pendingapproval', 'pendingrenewal'].includes(s.replace(/\s+/g, ''))) {
             return 'bg-yellow-100 text-yellow-800';
         }

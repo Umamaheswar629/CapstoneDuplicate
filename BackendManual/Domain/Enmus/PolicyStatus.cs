@@ -6,6 +6,7 @@
         Expired = 2,
         Cancelled = 3,
         PendingRenewal = 4,
-        PendingApproval = 5
+        PendingApproval = 5,
+        PaymentPending = 6
     }
 }

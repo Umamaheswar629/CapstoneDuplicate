@@ -22,5 +22,6 @@ public class CreateBusinessProfileRequest
     [Required]
     public string Location { get; set; } = string.Empty;
 
-    public int PriorClaimsCount { get; set; }
+    public bool HasSafetyCertification { get; set; }
+    public string? SafetyCertificatePath { get; set; }
 }
