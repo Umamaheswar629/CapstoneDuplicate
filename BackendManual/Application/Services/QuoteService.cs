@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Common;
+using Application.DTOs.Common;
 using Application.DTOs.Quote;
 using Application.Interfaces;
 using Domain.Entities;
@@ -81,30 +81,43 @@ public class QuoteService : IQuoteService
         decimal score = 50;
         var breakdown = new Dictionary<string, decimal>();
 
-        // Years in operation (lower risk with more years)
-        if (profile.YearsInOperation > 10) { score -= 10; breakdown["Years in Operation"] = -10; }
-        else if (profile.YearsInOperation > 5) { score -= 5; breakdown["Years in Operation"] = -5; }
-        else if (profile.YearsInOperation < 2) { score += 10; breakdown["Years in Operation"] = 10; }
+        // Years in operation (larger impact)
+        if (profile.YearsInOperation > 10) { score -= 15; breakdown["Years in Operation (10+)"] = -15; }
+        else if (profile.YearsInOperation > 5) { score -= 5; breakdown["Years in Operation (5-10)"] = -5; }
+        else if (profile.YearsInOperation < 2) { score += 15; breakdown["New Business (<2 yrs)"] = 15; }
+        else { score += 5; breakdown["Years in Operation (2-5)"] = 5; }
 
-        // Employee count
-        if (profile.EmployeeCount > 500) { score += 10; breakdown["Employee Count"] = 10; }
-        else if (profile.EmployeeCount > 100) { score += 5; breakdown["Employee Count"] = 5; }
+        // Employee count (larger thresholds)
+        if (profile.EmployeeCount > 500) { score += 15; breakdown["Large Workforce (500+)"] = 15; }
+        else if (profile.EmployeeCount > 100) { score += 8; breakdown["Medium Workforce (100-500)"] = 8; }
+        else if (profile.EmployeeCount < 10) { score += 5; breakdown["Small Team (<10)"] = 5; }
 
-        // Safety certification
-        if (profile.HasSafetyCertification) { score -= 10; breakdown["Safety Certification"] = -10; }
-        else { score += 10; breakdown["No Safety Certification"] = 10; }
+        // Safety certification (larger impact)
+        if (profile.HasSafetyCertification) { score -= 15; breakdown["Safety Certification"] = -15; }
+        else { score += 15; breakdown["No Safety Certification"] = 15; }
 
-        // Revenue factor
-        if (profile.AnnualRevenue > 10_000_000) { score += 5; breakdown["Annual Revenue"] = 5; }
+        // Revenue factor (larger impact)
+        if (profile.AnnualRevenue > 50_000_000) { score += 12; breakdown["Very High Revenue (50M+)"] = 12; }
+        else if (profile.AnnualRevenue > 10_000_000) { score += 8; breakdown["High Revenue (10M+)"] = 8; }
+        else if (profile.AnnualRevenue < 500_000) { score += 5; breakdown["Low Revenue (<5L)"] = 5; }
+
+        // Industry type risk
+        var highRiskIndustries = new[] { "manufacturing", "construction", "mining", "chemical", "oil", "gas", "transport" };
+        if (!string.IsNullOrEmpty(profile.IndustryType) &&
+            highRiskIndustries.Any(i => profile.IndustryType.Contains(i, StringComparison.OrdinalIgnoreCase)))
+        {
+            score += 10; breakdown["High-Risk Industry"] = 10;
+        }
 
         score = Math.Clamp(score, 0, 100);
 
         string level;
         string levelName;
         decimal multiplier;
-        if (score <= 30) { level = "Low"; levelName = "Low Risk"; multiplier = 0.8m; }
-        else if (score <= 60) { level = "Medium"; levelName = "Medium Risk"; multiplier = 1.0m; }
-        else { level = "High"; levelName = "High Risk"; multiplier = 1.3m; }
+        if (score <= 30) { level = "Low"; levelName = "Low Risk"; multiplier = 0.75m; }
+        else if (score <= 50) { level = "Medium"; levelName = "Medium Risk"; multiplier = 1.0m; }
+        else if (score <= 70) { level = "High"; levelName = "High Risk"; multiplier = 1.4m; }
+        else { level = "VeryHigh"; levelName = "Very High Risk"; multiplier = 1.85m; }
 
         return new RiskScoreDto
         {

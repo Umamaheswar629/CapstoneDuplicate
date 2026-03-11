@@ -14,9 +14,9 @@ import { AlertComponent } from '../../../shared/components/alert.component';
   standalone: true,
   imports: [CommonModule, FormsModule, StatCardComponent, BadgeComponent, AlertComponent],
   template: `
-    <div class="space-y-6">
-      <div class="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-        <h2 class="text-xl font-semibold text-gray-800">Billing & Payments</h2>
+    <div class="space-y-6 animate-fade-in">
+      <div class="flex justify-between items-center bg-white/80 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-slate-100">
+        <h2 class="text-2xl font-bold tracking-tight text-slate-900">Billing & Payments</h2>
       </div>
 
       <app-alert *ngIf="successMsg()" type="success" [message]="successMsg()" [visible]="true" (dismissed)="successMsg.set('')"></app-alert>
@@ -27,68 +27,69 @@ import { AlertComponent } from '../../../shared/components/alert.component';
 
       <ng-container *ngIf="!loading() && dashboard() as dash">
         <!-- Top 4 Stat Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <app-stat-card title="Total Paid" [value]="'₹' + (dash.totalPaid | number:'1.0-0')" colorClass="bg-green-500"></app-stat-card>
-          <app-stat-card title="Pending" [value]="'₹' + (dash.pendingAmount | number:'1.0-0')" colorClass="bg-yellow-500"></app-stat-card>
-          <app-stat-card title="Overdue" [value]="'₹' + (dash.overdueAmount | number:'1.0-0')" colorClass="bg-red-500"></app-stat-card>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-slide-up">
+          <app-stat-card title="Total Paid" [value]="'₹' + (dash.totalPaid | number:'1.0-0')" colorClass="bg-emerald-500"></app-stat-card>
+          <app-stat-card title="Pending" [value]="'₹' + (dash.pendingAmount | number:'1.0-0')" colorClass="bg-amber-500"></app-stat-card>
+          <app-stat-card title="Overdue" [value]="'₹' + (dash.overdueAmount | number:'1.0-0')" colorClass="bg-rose-500"></app-stat-card>
           <app-stat-card 
             title="Next Due Date" 
             [value]="(dash.nextDueDate | date:'MMM d, y') || 'None'" 
             [subtitle]="(dash.nextDueAmount || 0) > 0 ? '₹' + (dash.nextDueAmount | number:'1.0-0') : undefined"
-            colorClass="bg-blue-500">
+            colorClass="bg-indigo-500">
           </app-stat-card>
         </div>
 
         <!-- Invoices Section -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col overflow-hidden">
-          <div class="p-4 border-b border-gray-100 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col overflow-hidden animate-slide-up delay-100">
+          <div class="p-5 border-b border-slate-100 bg-slate-50 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 w-full sm:w-auto">
-              <label class="text-sm font-medium text-gray-700 whitespace-nowrap">Filter by Policy:</label>
-              <select [ngModel]="selectedPolicyId()" (ngModelChange)="selectedPolicyId.set(+$event || null)" class="block w-full sm:w-64 rounded-md border-gray-300 border py-2 pl-3 pr-10 text-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500">
+              <label class="text-sm font-bold text-slate-700 whitespace-nowrap">Filter by Policy:</label>
+              <select [ngModel]="selectedPolicyId()" (ngModelChange)="selectedPolicyId.set(+$event || null)" class="block w-full sm:w-72 rounded-xl bg-white border-slate-200 border py-2.5 pl-3 pr-10 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium">
                 <option [ngValue]="null">All Policies</option>
                 <option *ngFor="let p of policies()" [value]="p.policyId">{{ p.policyNumber }} ({{ p.insuranceTypeName }})</option>
               </select>
             </div>
             
-            <button *ngIf="hasNonEmiPending()" (click)="showEmiModal.set(true)" class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 border border-blue-300 text-sm font-medium rounded-md text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">
+            <button *ngIf="hasNonEmiPending()" (click)="showEmiModal.set(true)" class="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-indigo-200 text-sm font-bold rounded-xl text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-all shadow-sm">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
               Convert to EMI
             </button>
           </div>
 
           <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
+            <table class="min-w-full divide-y divide-slate-100">
               <thead class="bg-white">
                 <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Invoice #</th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paid Date</th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                  <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Invoice #</th>
+                  <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Amount</th>
+                  <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Due Date</th>
+                  <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Paid Date</th>
+                  <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+                  <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">Action</th>
                 </tr>
               </thead>
-              <tbody class="bg-white divide-y divide-gray-200">
+              <tbody class="bg-white divide-y divide-slate-50 text-sm">
                 <tr *ngIf="invoices().length === 0">
-                  <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500 italic">No invoices found for selected criteria.</td>
+                  <td colspan="6" class="px-6 py-8 text-center text-sm text-slate-500 italic">No invoices found for selected criteria.</td>
                 </tr>
-                <tr *ngFor="let inv of invoices()" class="hover:bg-gray-50">
+                <tr *ngFor="let inv of invoices()" class="hover:bg-slate-50 transition-colors">
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm font-medium text-gray-900">{{ inv.invoiceNumber }}</div>
-                    <div *ngIf="inv.isEmi" class="text-xs text-blue-600 bg-blue-50 inline-block px-1 rounded mt-1">EMI Payment</div>
+                    <div class="font-bold text-slate-900">{{ inv.invoiceNumber }}</div>
+                    <div *ngIf="inv.isEmi" class="text-xs font-semibold text-indigo-600 bg-indigo-50 inline-block px-2 py-0.5 rounded-md mt-1 border border-indigo-100">EMI Payment</div>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">₹{{ inv.amount | number:'1.0-2' }}</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm" [ngClass]="isOverdue(inv) ? 'text-red-600 font-medium' : 'text-gray-500'">{{ inv.dueDate | date }}</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ inv.paidDate ? (inv.paidDate | date) : '-' }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-extrabold text-slate-900">₹{{ inv.amount | number:'1.0-2' }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium" [ngClass]="isOverdue(inv) ? 'text-rose-600' : 'text-slate-600'">{{ inv.dueDate | date:'mediumDate' }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-slate-500 font-medium">{{ inv.paidDate ? (inv.paidDate | date:'mediumDate') : '-' }}</td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <app-badge [status]="inv.status"></app-badge>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <td class="px-6 py-4 whitespace-nowrap text-right font-bold">
                     <button *ngIf="inv.status === 'Pending' || inv.status === 'Overdue'" 
                       (click)="openPayModal(inv)"
-                      class="text-white bg-green-600 hover:bg-green-700 px-3 py-1.5 rounded-md transition-colors shadow-sm">
+                      class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-500/20 hover:-translate-y-0.5">
                       Pay Now
                     </button>
-                    <span *ngIf="inv.status === 'Paid'" class="text-gray-400">Complete</span>
+                    <span *ngIf="inv.status === 'Paid'" class="text-slate-400 font-semibold bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">Complete</span>
                   </td>
                 </tr>
               </tbody>
@@ -98,36 +99,54 @@ import { AlertComponent } from '../../../shared/components/alert.component';
 
         <!-- Pay Modal -->
         <div *ngIf="showPayModal()" class="relative z-50">
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 backdrop-blur-sm transition-opacity"></div>
+          <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"></div>
           <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md">
-                <div class="bg-white px-4 pb-4 pt-5 sm:p-6">
-                  <h3 class="text-lg font-semibold leading-6 text-gray-900 mb-4">Complete Payment</h3>
-                  <div class="space-y-4">
+              <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md border border-slate-100 animate-slide-up">
+                <div class="bg-white px-6 pt-6 pb-6">
+                  <div class="flex justify-between items-center mb-5">
+                    <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Complete Payment</h3>
+                    <button (click)="showPayModal.set(false)" class="text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-1.5 transition-colors">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                  </div>
+                  
+                  <div class="space-y-5">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700">Amount to Pay</label>
-                      <input type="text" [value]="'₹' + payForm.amountPaid()" disabled class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 border p-2 text-gray-500 sm:text-sm">
+                      <label class="block text-sm font-bold text-slate-700 mb-1">Amount to Pay</label>
+                      <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <span class="text-slate-500 font-bold">₹</span>
+                        </div>
+                        <input type="text" [value]="payForm.amountPaid() | number:'1.0-2'" disabled class="block w-full pl-8 rounded-xl bg-slate-100 border-none p-3 text-slate-700 font-black sm:text-lg">
+                      </div>
                     </div>
                     <div>
-                      <label class="block text-sm font-medium text-gray-700">Payment Method</label>
-                      <select [ngModel]="payForm.paymentMethod()" (ngModelChange)="payForm.paymentMethod.set($event)" class="mt-1 block w-full rounded-md border-gray-300 border p-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                      <label class="block text-sm font-bold text-slate-700 mb-1">Payment Method <span class="text-red-500">*</span></label>
+                      <select [ngModel]="payForm.paymentMethod()" (ngModelChange)="payForm.paymentMethod.set($event)" class="block w-full rounded-xl bg-slate-50 border border-slate-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all sm:text-sm font-medium">
                         <option value="Online">Credit/Debit Card (Online)</option>
                         <option value="BankTransfer">Bank Transfer</option>
                         <option value="Cash">Cash / Cheque</option>
                       </select>
                     </div>
                     <div>
-                      <label class="block text-sm font-medium text-gray-700">Transaction Reference</label>
-                      <input type="text" [ngModel]="payForm.transactionReference()" (ngModelChange)="payForm.transactionReference.set($event)" placeholder="e.g. TXN12345678" class="mt-1 block w-full rounded-md border-gray-300 border p-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                      <label class="block text-sm font-bold text-slate-700 mb-1">Transaction Reference <span class="text-red-500">*</span></label>
+                      <input type="text" [ngModel]="payForm.transactionReference()" (ngModelChange)="payForm.transactionReference.set($event)" 
+                        placeholder="e.g. TXN12345678" 
+                        class="block w-full rounded-xl bg-slate-50 border p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all sm:text-sm font-medium"
+                        [ngClass]="!payForm.transactionReference() ? 'border-slate-300' : 'border-blue-300'">
+                      <p *ngIf="!payForm.transactionReference()" class="mt-1 text-xs text-slate-500 font-medium">Please enter a valid receipt or transaction number.</p>
                     </div>
                   </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  <button type="button" (click)="processPayment()" [disabled]="actionLoading() || !payForm.transactionReference()" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto disabled:opacity-50">
+                <div class="bg-slate-50 px-6 py-4 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 border-t border-slate-100">
+                  <button type="button" (click)="showPayModal.set(false)" class="inline-flex w-full sm:w-auto justify-center rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">Cancel</button>
+                  <button type="button" (click)="processPayment()" [disabled]="actionLoading() || !payForm.transactionReference()" class="inline-flex w-full sm:w-auto justify-center items-center rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:-translate-y-0.5 disabled:opacity-50 disabled:transform-none disabled:shadow-none transition-all">
+                    <span *ngIf="actionLoading()" class="mr-2">
+                      <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    </span>
                     {{ actionLoading() ? 'Processing...' : 'Confirm Payment' }}
                   </button>
-                  <button type="button" (click)="showPayModal.set(false)" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
                 </div>
               </div>
             </div>
@@ -136,52 +155,60 @@ import { AlertComponent } from '../../../shared/components/alert.component';
 
         <!-- EMI Modal -->
         <div *ngIf="showEmiModal()" class="relative z-50">
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 backdrop-blur-sm transition-opacity"></div>
+          <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"></div>
           <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md">
-                <div class="bg-white px-4 pb-4 pt-5 sm:p-6">
-                  <h3 class="text-lg font-semibold leading-6 text-gray-900 mb-4">Convert to EMI</h3>
-                  <p class="text-sm text-gray-500 mb-4">You can convert your single pending invoice into multiple EMI payments. Please select the duration.</p>
+              <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md border border-slate-100 animate-slide-up">
+                <div class="bg-white px-6 pt-6 pb-6">
+                  <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Convert to EMI</h3>
+                    <button (click)="showEmiModal.set(false)" class="text-slate-400 hover:text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-full p-1.5 transition-colors">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                  </div>
+                  <p class="text-sm font-medium text-slate-500 mb-5 leading-relaxed">You can convert your single pending invoice into multiple EMI payments. Please select the duration.</p>
                   
                   <div class="space-y-3">
-                    <label class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none" [ngClass]="emiMonths() === 3 ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-300'">
+                    <label class="relative flex cursor-pointer rounded-xl border bg-slate-50 p-4 shadow-sm hover:bg-white transition-all focus:outline-none" [ngClass]="emiMonths() === 3 ? 'border-indigo-500 ring-2 ring-indigo-500/20 bg-indigo-50/30' : 'border-slate-200'">
                       <input type="radio" name="emi" [value]="3" [ngModel]="emiMonths()" (ngModelChange)="emiMonths.set($event)" class="sr-only">
                       <span class="flex flex-1">
                         <span class="flex flex-col">
-                          <span class="block text-sm font-medium text-gray-900">3 Months Options</span>
-                          <span class="mt-1 flex items-center text-sm text-gray-500">Spread payment over 3 months</span>
+                          <span class="block text-sm font-bold" [ngClass]="emiMonths() === 3 ? 'text-indigo-900' : 'text-slate-900'">3 Months Option</span>
+                          <span class="mt-1 flex items-center text-sm font-medium" [ngClass]="emiMonths() === 3 ? 'text-indigo-700' : 'text-slate-500'">Spread payment over 3 months</span>
                         </span>
                       </span>
-                      <svg *ngIf="emiMonths() === 3" class="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                      <svg *ngIf="emiMonths() === 3" class="h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
                     </label>
-                    <label class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none" [ngClass]="emiMonths() === 6 ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-300'">
+                    <label class="relative flex cursor-pointer rounded-xl border bg-slate-50 p-4 shadow-sm hover:bg-white transition-all focus:outline-none" [ngClass]="emiMonths() === 6 ? 'border-indigo-500 ring-2 ring-indigo-500/20 bg-indigo-50/30' : 'border-slate-200'">
                       <input type="radio" name="emi" [value]="6" [ngModel]="emiMonths()" (ngModelChange)="emiMonths.set($event)" class="sr-only">
                       <span class="flex flex-1">
                         <span class="flex flex-col">
-                          <span class="block text-sm font-medium text-gray-900">6 Months Options</span>
-                          <span class="mt-1 flex items-center text-sm text-gray-500">Spread payment over 6 months</span>
+                          <span class="block text-sm font-bold" [ngClass]="emiMonths() === 6 ? 'text-indigo-900' : 'text-slate-900'">6 Months Option</span>
+                          <span class="mt-1 flex items-center text-sm font-medium" [ngClass]="emiMonths() === 6 ? 'text-indigo-700' : 'text-slate-500'">Spread payment over 6 months</span>
                         </span>
                       </span>
-                      <svg *ngIf="emiMonths() === 6" class="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                      <svg *ngIf="emiMonths() === 6" class="h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
                     </label>
-                    <label class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none" [ngClass]="emiMonths() === 12 ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-300'">
+                    <label class="relative flex cursor-pointer rounded-xl border bg-slate-50 p-4 shadow-sm hover:bg-white transition-all focus:outline-none" [ngClass]="emiMonths() === 12 ? 'border-indigo-500 ring-2 ring-indigo-500/20 bg-indigo-50/30' : 'border-slate-200'">
                       <input type="radio" name="emi" [value]="12" [ngModel]="emiMonths()" (ngModelChange)="emiMonths.set($event)" class="sr-only">
                       <span class="flex flex-1">
                         <span class="flex flex-col">
-                          <span class="block text-sm font-medium text-gray-900">12 Months Options</span>
-                          <span class="mt-1 flex items-center text-sm text-gray-500">Spread payment over 12 months</span>
+                          <span class="block text-sm font-bold" [ngClass]="emiMonths() === 12 ? 'text-indigo-900' : 'text-slate-900'">12 Months Option</span>
+                          <span class="mt-1 flex items-center text-sm font-medium" [ngClass]="emiMonths() === 12 ? 'text-indigo-700' : 'text-slate-500'">Spread payment over 12 months</span>
                         </span>
                       </span>
-                      <svg *ngIf="emiMonths() === 12" class="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                      <svg *ngIf="emiMonths() === 12" class="h-6 w-6 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
                     </label>
                   </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  <button type="button" (click)="generateEmi()" [disabled]="actionLoading()" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto disabled:opacity-50">
-                    {{ actionLoading() ? 'Generating...' : 'Confirm EMI' }}
+                <div class="bg-slate-50 px-6 py-4 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 border-t border-slate-100">
+                  <button type="button" (click)="showEmiModal.set(false)" class="inline-flex w-full sm:w-auto justify-center rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">Cancel</button>
+                  <button type="button" (click)="generateEmi()" [disabled]="actionLoading()" class="inline-flex w-full sm:w-auto justify-center items-center rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 hover:-translate-y-0.5 disabled:opacity-50 disabled:transform-none disabled:shadow-none transition-all">
+                    <span *ngIf="actionLoading()" class="mr-2">
+                      <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    </span>
+                    {{ actionLoading() ? 'Processing...' : 'Confirm EMI Generation' }}
                   </button>
-                  <button type="button" (click)="showEmiModal.set(false)" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
                 </div>
               </div>
             </div>
@@ -294,11 +321,13 @@ export class BillingComponent implements OnInit {
         if (res.success) {
           this.showPayModal.set(false);
           this.successMsg.set('Payment processed successfully. Thank you!');
-          // Refresh data: fetch dashboard first, then load invoices to avoid race condition
-          this.billingService.getBillingDashboard().subscribe((d: any) => { 
-            if (d.success) this.dashboard.set(d.data!); 
-            this.loadInvoices(this.selectedPolicyId());
-          });
+          // Add slight delay to allow backend DB transactions to commit before fetching refresh
+          setTimeout(() => {
+            this.billingService.getBillingDashboard().subscribe((d: any) => { 
+              if (d.success) this.dashboard.set(d.data!); 
+              this.loadInvoices(this.selectedPolicyId());
+            });
+          }, 400);
         }
       },
       error: () => this.actionLoading.set(false)
@@ -321,11 +350,13 @@ export class BillingComponent implements OnInit {
         if (res.success) {
           this.showEmiModal.set(false);
           this.successMsg.set('Invoice successfully converted to EMI instalments.');
-          // Refresh data to show new EMIs
-          this.billingService.getBillingDashboard().subscribe((d: any) => { 
-            if (d.success) this.dashboard.set(d.data!); 
-            this.loadInvoices(this.selectedPolicyId());
-          });
+          // Add slight delay to allow backend DB transactions to commit before fetching refresh
+          setTimeout(() => {
+            this.billingService.getBillingDashboard().subscribe((d: any) => { 
+              if (d.success) this.dashboard.set(d.data!); 
+              this.loadInvoices(this.selectedPolicyId());
+            });
+          }, 400);
         } else {
           console.error('Backend returned 200 but success=false:', res);
           this.successMsg.set('');

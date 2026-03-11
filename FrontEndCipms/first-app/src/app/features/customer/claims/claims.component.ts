@@ -134,8 +134,10 @@ export class ClaimsComponent implements OnInit {
     const fileInput = document.getElementById('claim-document') as HTMLInputElement;
     if (fileInput) fileInput.value = '';
 
-    // Switch tab & reload
+    // Switch tab & reload with slight delay for backend commit
     this.activeTab.set('list');
-    this.loadClaims();
+    setTimeout(() => {
+      this.loadClaims();
+    }, 400);
   }
 }

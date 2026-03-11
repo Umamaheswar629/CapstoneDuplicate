@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -45,10 +45,22 @@ public class InsuranceRepository : IInsuranceRepository
 
     public async Task<List<Plan>> GetPlansByTypeAsync(int insuranceTypeId)
     {
-        return await _context.Plans
+        var plans = await _context.Plans
             .Include(p => p.InsuranceType)
             .Where(p => p.InsuranceTypeId == insuranceTypeId && p.IsActive)
             .ToListAsync();
+
+        // Filter out plans with invalid BasePremium, then deduplicate by TierName
+        var deduped = plans
+            .Where(p => p.BasePremium > 0) // exclude bad data with ₹0 base
+            .GroupBy(p => p.TierName, StringComparer.OrdinalIgnoreCase)
+            .Select(g => g.OrderBy(p => p.Id).First()) // keep the original (oldest) valid plan
+            .OrderBy(p => p.TierName.Equals("Basic", StringComparison.OrdinalIgnoreCase) ? 0 :
+                          p.TierName.Equals("Standard", StringComparison.OrdinalIgnoreCase) ? 1 :
+                          p.TierName.Equals("Premium", StringComparison.OrdinalIgnoreCase) ? 2 : 3)
+            .ToList();
+
+        return deduped;
     }
 
     public async Task AddPlanAsync(Plan plan)

@@ -1,44 +1,73 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { CommissionService } from '../../../core/services/commission.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { CommissionSummaryDto } from '../../../core/models/commission.model';
-import { StatCardComponent } from '../../../shared/components/stat-card.component';
-import { DataTableComponent } from '../../../shared/components/data-table.component';
 
 @Component({
   selector: 'app-agent-dashboard',
   standalone: true,
-  imports: [CommonModule, StatCardComponent, DataTableComponent],
-  template: `
-    <div class="space-y-6">
-      <div *ngIf="loading()" class="flex justify-center items-center h-64">
-        <svg class="animate-spin h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-      </div>
+  imports: [CommonModule],
+  templateUrl: './agent-dashboard.component.html',
+  styles: [`
+    :host { display: block; }
 
-      <ng-container *ngIf="!loading() && summary() as sum">
-        <!-- Top row: 4 StatCards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <app-stat-card title="Total Commission Earned" [value]="'₹' + (sum.totalCommissionEarned.toLocaleString('en-IN'))" colorClass="bg-blue-500"></app-stat-card>
-          <app-stat-card title="This Month" [value]="'₹' + (sum.thisMonthCommission.toLocaleString('en-IN'))" colorClass="bg-green-500"></app-stat-card>
-          <app-stat-card title="Total Policies Created" [value]="sum.totalPoliciesCreated" colorClass="bg-purple-500"></app-stat-card>
-          <app-stat-card title="Average Premium" [value]="'₹' + (sum.averagePremium.toLocaleString('en-IN'))" colorClass="bg-indigo-500"></app-stat-card>
-        </div>
+    .dashboard-stat-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(16, 185, 129, 0.06), 0 1px 4px rgba(0,0,0,0.04);
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+    .dashboard-stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(16, 185, 129, 0.12), 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .stat-icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      flex-shrink: 0;
+    }
+    .stat-content { display: flex; flex-direction: column; min-width: 0; }
+    .stat-label { font-size: 0.75rem; font-weight: 500; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: #1f2937; line-height: 1.2; }
+    .stat-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; opacity: 0; transition: opacity 0.3s ease; }
+    .dashboard-stat-card:hover .stat-accent { opacity: 1; }
 
-        <!-- Recent Commissions -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 overflow-hidden">
-          <h3 class="text-lg font-medium text-gray-900 mb-4">Recent Commissions</h3>
-          <app-data-table 
-            [columns]="recentColumns" 
-            [data]="formattedRecentCommissions()" 
-            emptyMessage="No recent commissions to show."
-            [loading]="false">
-          </app-data-table>
-        </div>
-      </ng-container>
-    </div>
-  `
+    .dashboard-glass-card {
+      background: rgba(255, 255, 255, 0.80);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(16, 185, 129, 0.06), 0 2px 8px rgba(0,0,0,0.03);
+      transition: box-shadow 0.3s ease;
+    }
+    .dashboard-glass-card:hover {
+      box-shadow: 0 16px 48px rgba(16, 185, 129, 0.1), 0 4px 16px rgba(0,0,0,0.04);
+    }
+
+    .dashboard-card-entrance {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: dashboardCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes dashboardCardIn { to { opacity: 1; transform: translateY(0); } }
+    .dashboard-float { animation: dashFloat 6s ease-in-out infinite; }
+    @keyframes dashFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+  `]
 })
 export class AgentDashboardComponent implements OnInit {
   private titleService = inject(Title);
@@ -48,32 +77,26 @@ export class AgentDashboardComponent implements OnInit {
   summary = signal<CommissionSummaryDto | null>(null);
   loading = signal(true);
 
-  recentColumns = [
-    { key: 'policyNumber', label: 'Policy Number' },
-    { key: 'customerName', label: 'Customer Name' },
-    { key: 'premiumFormatted', label: 'Premium (₹)' },
-    { key: 'commissionRate', label: 'Rate (%)' },
-    { key: 'commissionEarnedFormatted', label: 'Earned (₹)' },
-    { key: 'dateFormatted', label: 'Date' }
-  ];
+  agentName = computed(() => {
+    const user = this.authService.currentUser();
+    if (user?.fullName) {
+      return user.fullName.split(' ')[0];
+    }
+    return 'Agent';
+  });
 
   ngOnInit() {
     this.titleService.setTitle('CIPMS | Agent Dashboard');
-
-    // In a real app authService.currentUser() might take a moment to load if it's from local storage,
-    // assuming it's available synchronously here.
     const user = this.authService.currentUser();
     if (user && user.userId) {
       this.loadSummary(user.userId);
     } else {
-      // Fallback if not ready immediately
       this.loading.set(false);
     }
   }
 
   loadSummary(agentId: string | number) {
     this.loading.set(true);
-    // Passing agentId as string since JWT userId is usually string, adjust if needed
     this.commissionService.getAgentSummary(agentId.toString()).subscribe({
       next: (res) => {
         this.loading.set(false);
@@ -83,19 +106,5 @@ export class AgentDashboardComponent implements OnInit {
       },
       error: () => this.loading.set(false)
     });
-  }
-
-  formattedRecentCommissions() {
-    if (!this.summary()?.commissions) return [];
-
-    // Format the data for the data table
-    return this.summary()!.commissions.map((c: any) => ({
-      ...c,
-      premiumFormatted: '₹' + c.premiumAmount.toLocaleString('en-IN'),
-      commissionEarnedFormatted: '₹' + c.commissionAmount.toLocaleString('en-IN'),
-      dateFormatted: new Intl.DateTimeFormat('en-IN', {
-        day: '2-digit', month: 'short', year: 'numeric'
-      }).format(new Date(c.earnedAt))
-    }));
   }
 }
