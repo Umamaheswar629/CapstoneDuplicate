@@ -11,16 +11,16 @@ export class BusinessProfileService {
     private http = inject(HttpClient);
     private readonly API_URL = 'https://localhost:7207/api/BusinessProfile';
 
-    getMyProfile(): Observable<ApiResponse<BusinessProfileDto>> {
-        return this.http.get<ApiResponse<BusinessProfileDto>>(this.API_URL);
+    getMyProfiles(): Observable<ApiResponse<BusinessProfileDto[]>> {
+        return this.http.get<ApiResponse<BusinessProfileDto[]>>(this.API_URL);
     }
 
     create(req: CreateBusinessProfileRequest): Observable<ApiResponse<BusinessProfileDto>> {
         return this.http.post<ApiResponse<BusinessProfileDto>>(this.API_URL, req);
     }
 
-    update(req: UpdateBusinessProfileRequest): Observable<ApiResponse<BusinessProfileDto>> {
-        return this.http.put<ApiResponse<BusinessProfileDto>>(this.API_URL, req);
+    update(id: number | string, req: UpdateBusinessProfileRequest): Observable<ApiResponse<BusinessProfileDto>> {
+        return this.http.put<ApiResponse<BusinessProfileDto>>(`${this.API_URL}/${id}`, req);
     }
 
     uploadCertificate(file: File): Observable<ApiResponse<string>> {

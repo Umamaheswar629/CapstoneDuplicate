@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities
@@ -13,7 +13,7 @@ namespace Domain.Entities
         public bool IsActive { get; set; } = true;
         public DateTime CreatedAt { get; set; }
 
-        public BusinessProfile? BusinessProfile { get; set; }
+        public ICollection<BusinessProfile> BusinessProfiles { get; set; } = new List<BusinessProfile>();
         
         public ICollection<Policy> AgentPolicies { get; set; } = new List<Policy>();
         public ICollection<Policy> Policies { get; set; } = new List<Policy>();

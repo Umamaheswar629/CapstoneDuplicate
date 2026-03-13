@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Billing;
+using Application.DTOs.Billing;
 using Application.DTOs.Common;
 using Application.DTOs.Policy;
 using Application.Interfaces;
@@ -39,6 +39,15 @@ public class PolicyService : IPolicyService
             if (agent == null)
                 return ApiResponse<PolicyDto>.FailResponse("Agent not found or inactive.");
         }
+        else
+        {
+            // Auto-assign agent
+            var autoAgent = await _policyRepo.GetAvailableAgentAsync();
+            if (autoAgent != null)
+            {
+                request.AgentId = autoAgent.Id;
+            }
+        }
 
         var startDate = request.StartDate ?? DateTime.UtcNow;
 
@@ -68,6 +77,13 @@ public class PolicyService : IPolicyService
 
         // Reload the full policy with navigation properties
         var fullPolicy = await _policyRepo.GetByIdWithFullDetailsAsync(policy.Id);
+        
+        // If agent is still missing in reloaded object (happens if EF tracker is dirty), fall back manually
+        if (fullPolicy != null && fullPolicy.Agent == null && fullPolicy.AgentId.HasValue)
+        {
+             fullPolicy.Agent = await _policyRepo.GetActiveAgentAsync(fullPolicy.AgentId.Value);
+        }
+
         var reloadedPlan = fullPolicy?.Quote?.Plan;
 
         return ApiResponse<PolicyDto>.SuccessResponse(MapPolicyToDto(fullPolicy ?? policy, reloadedPlan ?? plan), "Policy created and pending agent approval.");
@@ -78,6 +94,18 @@ public class PolicyService : IPolicyService
         var policy = await _policyRepo.GetByIdWithFullDetailsAsync(id);
         if (policy == null)
             return ApiResponse<PolicyDetailDto>.FailResponse("Policy not found.");
+
+        // Lazy-assign agent if missing
+        if (policy.Status == (int)PolicyStatus.PendingApproval && policy.AgentId == null)
+        {
+            var autoAgent = await _policyRepo.GetAvailableAgentAsync();
+            if (autoAgent != null)
+            {
+                policy.AgentId = autoAgent.Id;
+                policy.Agent = autoAgent;
+                await _policyRepo.SaveChangesAsync();
+            }
+        }
 
         // Access control
         if (role == UserRole.Customer && policy.CustomerId != userId)
@@ -158,6 +186,26 @@ public class PolicyService : IPolicyService
             customerId, agentId, status, request.InsuranceTypeId,
             request.Search, request.SortBy, request.SortDirection,
             request.Page, request.PageSize);
+
+        // Lazy-assign agents to pending policies that were created without one
+        bool hasChanges = false;
+        foreach (var p in policies.Where(p => p.Status == (int)PolicyStatus.PendingApproval && p.AgentId == null))
+        {
+            Console.WriteLine($"[DEBUG] Attempting lazy-assignment for policy {p.PolicyNumber}");
+            var autoAgent = await _policyRepo.GetAvailableAgentAsync();
+            if (autoAgent != null)
+            {
+                Console.WriteLine($"[DEBUG] Assigned agent {autoAgent.FullName} (ID: {autoAgent.Id}) to policy {p.PolicyNumber}");
+                p.AgentId = autoAgent.Id;
+                p.Agent = autoAgent;
+                hasChanges = true;
+            }
+            else
+            {
+                Console.WriteLine($"[DEBUG] FAILED to find available agent for policy {p.PolicyNumber}");
+            }
+        }
+        if (hasChanges) await _policyRepo.SaveChangesAsync();
 
         var items = policies.Select(p => MapPolicyToDto(p, p.Quote?.Plan)).ToList();
 
@@ -336,7 +384,8 @@ public class PolicyService : IPolicyService
             CustomerName = p.Customer?.FullName ?? "",
             CustomerEmail = p.Customer?.Email ?? "",
             AgentId = p.AgentId,
-            AgentName = p.Agent?.FullName,
+            AgentName = p.Agent?.FullName ?? (p.AgentId.HasValue ? $"Agent #{p.AgentId}" : null),
+            AgentEmail = p.Agent?.Email,
             InsuranceTypeName = plan?.InsuranceType?.Name ?? "",
             PlanName = plan?.TierName ?? "",
             TierName = plan?.TierName ?? "",

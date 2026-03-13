@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Auth;
+using Application.DTOs.Auth;
 using Application.DTOs.Common;
 using Application.Interfaces;
 using Domain.Entities;
@@ -102,6 +102,30 @@ public class AuthService : IAuthService
             Email = user.Email,
             Role = ((UserRole)user.Role).ToString()
         }, "User created successfully.");
+    }
+
+    public async Task<ApiResponse<object>> ResetPasswordAsync(ResetPasswordRequest request)
+    {
+        var user = await _userRepo.GetByEmailAsync(request.Email);
+        if (user == null)
+            return ApiResponse<object>.FailResponse("User with this email not found.");
+
+        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
+        await _userRepo.UpdateAsync(user);
+
+        return ApiResponse<object>.SuccessResponse(null, "Password reset successfully. You can now login with your new password.");
+    }
+
+    public async Task<ApiResponse<object>> UpdateUserRoleAsync(string email, int newRole)
+    {
+        var user = await _userRepo.GetByEmailAsync(email);
+        if (user == null)
+            return ApiResponse<object>.FailResponse("User with this email not found.");
+
+        user.Role = newRole;
+        await _userRepo.UpdateAsync(user);
+
+        return ApiResponse<object>.SuccessResponse(null, $"User role updated to {(Domain.Enmus.UserRole)newRole} successfully.");
     }
 
     private string GenerateJwtToken(User user)

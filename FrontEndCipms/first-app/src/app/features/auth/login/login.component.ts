@@ -139,7 +139,7 @@ import { AuthService } from '../../../core/services/auth.service';
                 <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded transition-colors">
                 <label for="remember-me" class="ml-2 block text-sm font-medium text-slate-600">Remember me</label>
               </div>
-              <a href="#" class="text-sm font-bold text-blue-600 hover:text-blue-500 transition-colors">Forgot password?</a>
+              <button type="button" (click)="showResetModal.set(true)" class="text-sm font-bold text-blue-600 hover:text-blue-500 transition-colors">Forgot password?</button>
             </div>
 
             <button type="submit" [disabled]="!isFormValid() || loading()"
@@ -163,6 +163,65 @@ import { AuthService } from '../../../core/services/auth.service';
         </div>
       </div>
     </div>
+
+    <!-- Reset Password Modal -->
+    <div *ngIf="showResetModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+        <div class="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 animate-slide-up border border-slate-100">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h3 class="text-2xl font-extrabold text-slate-900">Reset Password</h3>
+                    <p class="text-slate-500 text-sm mt-1">Set a new password for your account.</p>
+                </div>
+                <button (click)="showResetModal.set(false)" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div *ngIf="resetSuccess()" class="mb-6 bg-emerald-50 border-emerald-500 border-l-4 p-4 rounded-r-xl">
+                <p class="text-emerald-800 text-sm font-bold flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Password updated!
+                </p>
+            </div>
+
+            <div *ngIf="resetError()" class="mb-6 bg-red-50 border-red-500 border-l-4 p-4 rounded-r-xl">
+                <p class="text-red-800 text-sm font-bold flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    {{ resetError() }}
+                </p>
+            </div>
+
+            <form class="space-y-5" (ngSubmit)="onResetSubmit()">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">Email</label>
+                    <input type="email" name="resetEmail" required
+                        class="block w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all sm:text-sm"
+                        placeholder="your@email.com"
+                        [ngModel]="resetEmail()"
+                        (ngModelChange)="resetEmail.set($event)">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-1">New Password</label>
+                    <input type="password" name="newPassword" required
+                        class="block w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all sm:text-sm"
+                        placeholder="Min 6 characters"
+                        [ngModel]="newPass()"
+                        (ngModelChange)="newPass.set($event)">
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" (click)="showResetModal.set(false)"
+                        class="flex-1 px-4 py-3 border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition-all">
+                        Cancel
+                    </button>
+                    <button type="submit" [disabled]="!resetEmail() || newPass().length < 6 || resetLoading()"
+                        class="flex-[2] py-3 border border-transparent rounded-xl shadow-lg shadow-blue-500/30 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 disabled:opacity-50 transition-all">
+                        {{ resetLoading() ? 'Updating...' : 'Update Password' }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
   `
 })
 export class LoginComponent implements OnInit {
@@ -174,6 +233,14 @@ export class LoginComponent implements OnInit {
   showPassword = signal(false);
   loading = signal(false);
   errorMessage = signal('');
+
+  // Reset Password UI
+  showResetModal = signal(false);
+  resetEmail = signal('');
+  newPass = signal('');
+  resetLoading = signal(false);
+  resetError = signal('');
+  resetSuccess = signal(false);
 
   // Validation Signals
   emailError = signal('');
@@ -221,6 +288,36 @@ export class LoginComponent implements OnInit {
     return !!this.email() && !this.emailError() && 
            !!this.password() && !this.passwordError() && 
            this.captchaAnswer() !== null;
+  }
+
+  onResetSubmit() {
+    if (!this.resetEmail() || this.newPass().length < 6) return;
+    
+    this.resetLoading.set(true);
+    this.resetError.set('');
+    this.resetSuccess.set(false);
+
+    this.authService.resetPassword({ email: this.resetEmail(), newPassword: this.newPass() }).subscribe({
+        next: (res) => {
+            this.resetLoading.set(false);
+            if (res.success) {
+                this.resetSuccess.set(true);
+                // Clear reset fields
+                this.resetEmail.set('');
+                this.newPass.set('');
+                setTimeout(() => {
+                    this.showResetModal.set(false);
+                    this.resetSuccess.set(false);
+                }, 3000);
+            } else {
+                this.resetError.set(res.message || 'Reset failed');
+            }
+        },
+        error: (err) => {
+            this.resetLoading.set(false);
+            this.resetError.set(err.error?.message || 'Server error');
+        }
+    });
   }
 
   onSubmit(): void {

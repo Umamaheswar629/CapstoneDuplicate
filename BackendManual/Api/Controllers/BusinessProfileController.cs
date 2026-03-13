@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Common;
+using Application.DTOs.Common;
 using Application.DTOs.Insurance;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -20,11 +20,19 @@ public class BusinessProfileController : BaseApiController
         _env = env;
     }
 
-    /// <summary>Get current user's business profile</summary>
+    /// <summary>Get current user's business profiles</summary>
     [HttpGet]
-    public async Task<IActionResult> GetProfile()
+    public async Task<IActionResult> GetAllProfiles()
     {
-        var result = await _service.GetByUserIdAsync(GetUserId());
+        var result = await _service.GetAllByUserIdAsync(GetUserId());
+        return Ok(result);
+    }
+
+    /// <summary>Get specific business profile</summary>
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetProfile(int id)
+    {
+        var result = await _service.GetByIdAsync(id, GetUserId());
         if (!result.Success) return NotFound(result);
         return Ok(result);
     }
@@ -35,14 +43,14 @@ public class BusinessProfileController : BaseApiController
     {
         var result = await _service.CreateAsync(GetUserId(), request);
         if (!result.Success) return BadRequest(result);
-        return CreatedAtAction(nameof(GetProfile), result);
+        return CreatedAtAction(nameof(GetProfile), new { id = result.Data?.Id }, result);
     }
 
     /// <summary>Update business profile</summary>
-    [HttpPut]
-    public async Task<IActionResult> UpdateProfile([FromBody] UpdateBusinessProfileRequest request)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateProfile(int id, [FromBody] UpdateBusinessProfileRequest request)
     {
-        var result = await _service.UpdateAsync(GetUserId(), request);
+        var result = await _service.UpdateAsync(id, GetUserId(), request);
         if (!result.Success) return BadRequest(result);
         return Ok(result);
     }
@@ -68,15 +76,6 @@ public class BusinessProfileController : BaseApiController
         }
 
         var relativePath = $"/Uploads/SafetyCertificates/{fileName}";
-
-        // If profile already exists, update it directly
-        var profile = await _repo.GetByUserIdAsync(GetUserId());
-        if (profile != null)
-        {
-            profile.SafetyCertificatePath = relativePath;
-            profile.HasSafetyCertification = true;
-            await _repo.SaveChangesAsync();
-        }
 
         return Ok(ApiResponse<string>.SuccessResponse(relativePath, "Certificate uploaded successfully."));
     }

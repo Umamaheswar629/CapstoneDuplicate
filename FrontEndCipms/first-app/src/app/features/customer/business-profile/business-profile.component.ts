@@ -15,8 +15,10 @@ import { LoadingSpinnerComponent } from '../../../shared/components/loading-spin
 export class BusinessProfileComponent implements OnInit {
   private businessProfileService = inject(BusinessProfileService);
 
-  profile = signal<BusinessProfileDto | null>(null);
+  profiles = signal<BusinessProfileDto[]>([]);
+  activeProfileId = signal<number | string | null>(null);
   editing = signal(false);
+  isNewProfile = signal(false);
   loading = signal(false);
   saving = signal(false);
   successMessage = signal('');
@@ -45,46 +47,48 @@ export class BusinessProfileComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.loadProfile();
+    this.loadProfiles();
   }
 
-  loadProfile() {
+  loadProfiles() {
     this.loading.set(true);
-    this.businessProfileService.getMyProfile().subscribe({
+    this.businessProfileService.getMyProfiles().subscribe({
       next: (res) => {
         this.loading.set(false);
         if (res.success && res.data) {
-          this.profile.set(res.data);
-          this.populateForm(res.data);
+          this.profiles.set(res.data);
           this.editing.set(false);
         }
       },
       error: (err) => {
         this.loading.set(false);
-        if (err.status === 404 || !err.error?.success) {
-          // Profile doesn't exist
-          this.profile.set(null);
-          this.editing.set(true);
-        } else {
-          this.errorMessage.set('Failed to load profile.');
-        }
+        this.errorMessage.set('Failed to load profiles.');
       }
     });
   }
 
-  editProfile() {
-    if (this.profile()) {
-      this.populateForm(this.profile()!);
-    }
+  addNewProfile() {
     this.editing.set(true);
+    this.isNewProfile.set(true);
+    this.activeProfileId.set(null);
+    this.resetForm();
+    this.successMessage.set('');
+    this.errorMessage.set('');
+  }
+
+  editProfile(profile: BusinessProfileDto) {
+    this.populateForm(profile);
+    this.activeProfileId.set(profile.id);
+    this.editing.set(true);
+    this.isNewProfile.set(false);
     this.successMessage.set('');
     this.errorMessage.set('');
   }
 
   cancelEdit() {
-    if (this.profile()) {
-      this.editing.set(false);
-    }
+    this.editing.set(false);
+    this.isNewProfile.set(false);
+    this.activeProfileId.set(null);
   }
 
   populateForm(data: BusinessProfileDto) {
@@ -95,6 +99,21 @@ export class BusinessProfileComponent implements OnInit {
     this.yearsInOperation.set(data.yearsInOperation);
     this.location.set(data.location);
     this.hasSafetyCertification.set(data.hasSafetyCertification);
+    // Remember existing path if they don't upload a new one
+    this.uploadedCertPath.set(data.safetyCertificatePath || '');
+  }
+
+  resetForm() {
+    this.businessName.set('');
+    this.industryType.set('');
+    this.employeeCount.set(0);
+    this.annualRevenue.set(0);
+    this.yearsInOperation.set(0);
+    this.location.set('');
+    this.hasSafetyCertification.set(false);
+    this.selectedFile.set(null);
+    this.selectedFileName.set('');
+    this.uploadedCertPath.set('');
   }
 
   saveProfile() {
@@ -113,19 +132,18 @@ export class BusinessProfileComponent implements OnInit {
       safetyCertificatePath: this.uploadedCertPath() || undefined
     };
 
-    const req = this.profile()
-      ? this.businessProfileService.update(dto)
-      : this.businessProfileService.create(dto);
+    const req = this.isNewProfile()
+      ? this.businessProfileService.create(dto)
+      : this.businessProfileService.update(this.activeProfileId()!, dto);
 
     req.subscribe({
       next: (res: any) => {
         this.saving.set(false);
         if (res.success && res.data) {
-          this.profile.set(res.data);
+          this.loadProfiles();
           this.editing.set(false);
           this.selectedFile.set(null);
           this.selectedFileName.set('');
-          this.uploadedCertPath.set('');
           this.successMessage.set('Profile saved successfully.');
         } else {
           this.errorMessage.set(res.message || 'Error saving profile.');

@@ -226,8 +226,7 @@
               "RelativeToolTip": "Application\\Interfaces\\IAppDbContext.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAYwAUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T13:39:29.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T13:39:29.41Z"
             },
             {
               "$type": "Document",
@@ -239,8 +238,7 @@
               "RelativeToolTip": "Application\\DTOs\\Common\\ApiResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:32:04.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-25T09:32:04.438Z"
             },
             {
               "$type": "Document",
@@ -252,8 +250,7 @@
               "RelativeToolTip": "Application\\DTOs\\Common\\PagedResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:32:36.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-25T09:32:36.541Z"
             },
             {
               "$type": "Document",
@@ -265,8 +262,7 @@
               "RelativeToolTip": "Application\\Services\\QuoteService.cs",
               "ViewState": "AgIAAJEAAAAAAAAAAAAuwF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:08:07.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-25T09:08:07.954Z"
             },
             {
               "$type": "Document",
@@ -278,8 +274,7 @@
               "RelativeToolTip": "Application\\Services\\PolicyService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:08:27.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-25T09:08:27.773Z"
             },
             {
               "$type": "Document",
@@ -291,8 +286,7 @@
               "RelativeToolTip": "Application\\Services\\BusinessProfileService.cs",
               "ViewState": "AgIAABYAAAAAzvj4LCQYwB8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T09:07:13.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-25T09:07:13.628Z"
             },
             {
               "$type": "Document",
@@ -302,7 +296,7 @@
               "RelativeDocumentMoniker": "Application\\Services\\CommissionService.cs",
               "ToolTip": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Services\\CommissionService.cs",
               "RelativeToolTip": "Application\\Services\\CommissionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T09:10:15.67Z",
               "EditorCaption": ""

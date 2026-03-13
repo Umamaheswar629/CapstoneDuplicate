@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -14,15 +14,17 @@ public class BusinessProfileRepository : IBusinessProfileRepository
         _context = context;
     }
 
-    public async Task<BusinessProfile?> GetByUserIdAsync(int userId)
+    public async Task<IEnumerable<BusinessProfile>> GetAllByUserIdAsync(int userId)
     {
         return await _context.BusinessProfiles
-            .FirstOrDefaultAsync(b => b.UserId == userId);
+            .Where(b => b.UserId == userId)
+            .ToListAsync();
     }
 
-    public async Task<bool> ExistsByUserIdAsync(int userId)
+    public async Task<BusinessProfile?> GetByIdAsync(int id, int userId)
     {
-        return await _context.BusinessProfiles.AnyAsync(b => b.UserId == userId);
+        return await _context.BusinessProfiles
+            .FirstOrDefaultAsync(b => b.Id == id && b.UserId == userId);
     }
 
     public async Task AddAsync(BusinessProfile profile)

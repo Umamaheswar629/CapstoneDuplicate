@@ -1,4 +1,4 @@
-﻿using Domain.Enmus;
+using Domain.Enmus;
 using Domain.Entities;
 
 
@@ -8,6 +8,7 @@ public interface IPolicyRepository
 {
     Task<Quote?> GetQuoteWithDetailsAsync(int quoteId);
     Task<User?> GetActiveAgentAsync(int agentId);
+    Task<User?> GetAvailableAgentAsync();
     Task<Policy?> GetByIdWithFullDetailsAsync(int policyId);
     Task<Policy?> GetByIdWithInvoicesAsync(int policyId);
     Task<Policy?> GetByIdForRenewalAsync(int policyId);

@@ -147,8 +147,10 @@
                         }
                         @for (p of data.policiesExpiringSoon; track p.policyNumber) {
                         <tr class="hover:bg-slate-50 transition-colors group">
-                            <td class="px-8 py-5 whitespace-nowrap text-sm font-black text-slate-900">{{ p.policyNumber
-                                }}</td>
+                            <td class="px-8 py-5 whitespace-nowrap text-sm font-black text-slate-900">
+                                {{ p.policyNumber }}
+                                <div class="text-[10px] text-slate-400 font-medium">Agent: {{ p.agentName || 'None' }}</div>
+                            </td>
                             <td class="px-8 py-5 whitespace-nowrap text-sm font-bold text-slate-600">{{
                                 p.insuranceTypeName }}</td>
                             <td class="px-8 py-5 whitespace-nowrap">

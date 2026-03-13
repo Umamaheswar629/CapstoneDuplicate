@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+using Application.Interfaces;
 using Domain.Entities;
 using Domain.Enmus;
 using Infrastructure.Data;
@@ -27,6 +27,31 @@ public class PolicyRepository : IPolicyRepository
     {
         return await _context.Users
             .FirstOrDefaultAsync(u => u.Id == agentId && u.IsActive && u.Role == (int)UserRole.Agent);
+    }
+
+    public async Task<User?> GetAvailableAgentAsync()
+    {
+        var allUsers = await _context.Users.ToListAsync();
+        
+        // Try to find role-based agents first
+        var agents = allUsers.Where(u => u.Role == (int)UserRole.Agent).ToList();
+
+        if (!agents.Any())
+        {
+            agents = allUsers.Where(u => u.Role == (int)UserRole.Admin).ToList();
+        }
+
+        if (!agents.Any())
+        {
+            agents = allUsers.ToList();
+        }
+
+        if (!agents.Any()) return null;
+
+        var activeAgents = agents.Where(u => u.IsActive).ToList();
+        var targetList = activeAgents.Any() ? activeAgents : agents;
+        
+        return targetList.OrderBy(u => u.AgentPolicies?.Count ?? 0).FirstOrDefault();
     }
 
     public async Task<Policy?> GetByIdWithFullDetailsAsync(int policyId)

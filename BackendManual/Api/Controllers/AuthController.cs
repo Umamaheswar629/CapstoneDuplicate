@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Auth;
+using Application.DTOs.Auth;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +36,13 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> AdminCreateUser([FromBody] AdminCreateUserRequest request)
     {
         var result = await _authService.AdminCreateUserAsync(request);
+        return result.Success ? Ok(result) : BadRequest(result);
+    }
+
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+    {
+        var result = await _authService.ResetPasswordAsync(request);
         return result.Success ? Ok(result) : BadRequest(result);
     }
 }

@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+using Application.Interfaces;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -64,6 +64,13 @@ namespace Infrastructure.Data
                 .WithMany(u => u.Commissions)
                 .HasForeignKey(c => c.AgentId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // User → BusinessProfiles (1-to-many)
+            modelBuilder.Entity<BusinessProfile>()
+                .HasOne(b => b.User)
+                .WithMany(u => u.BusinessProfiles)
+                .HasForeignKey(b => b.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // ── Decimal precision configurations ────────────────────────
             modelBuilder.Entity<Plan>().Property(p => p.BasePremium).HasColumnType("decimal(18,2)");

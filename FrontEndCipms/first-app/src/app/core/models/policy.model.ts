@@ -9,6 +9,7 @@ export interface PolicyDto {
     customerEmail: string;
     agentId?: number | string;
     agentName?: string;
+    agentEmail?: string;
     insuranceTypeName: string;
     planName: string;
     tierName: string;

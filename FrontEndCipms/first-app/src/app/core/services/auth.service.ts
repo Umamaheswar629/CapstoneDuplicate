@@ -70,6 +70,10 @@ export class AuthService {
         return this.http.post<ApiResponse<AuthResponse>>(`${this.API_URL}/admin/create-user`, req);
     }
 
+    resetPassword(req: { email: string; newPassword: string }): Observable<ApiResponse<any>> {
+        return this.http.post<ApiResponse<any>>(`${this.API_URL}/reset-password`, req);
+    }
+
     logout(): void {
         this.tokenService.removeToken();
         this.currentUser.set(null);

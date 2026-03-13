@@ -65,8 +65,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("BusinessProfiles");
                 });
@@ -526,8 +525,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.BusinessProfile", b =>
                 {
                     b.HasOne("Domain.Entities.User", "User")
-                        .WithOne("BusinessProfile")
-                        .HasForeignKey("Domain.Entities.BusinessProfile", "UserId")
+                        .WithMany("BusinessProfiles")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -722,7 +721,7 @@ namespace Infrastructure.Migrations
                 {
                     b.Navigation("AgentPolicies");
 
-                    b.Navigation("BusinessProfile");
+                    b.Navigation("BusinessProfiles");
 
                     b.Navigation("Claims");
 

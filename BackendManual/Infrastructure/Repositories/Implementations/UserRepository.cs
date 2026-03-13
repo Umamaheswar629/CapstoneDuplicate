@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +17,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     public async Task<User?> GetByIdWithProfileAsync(int userId)
     {
         return await _context.Users
-            .Include(u => u.BusinessProfile)
+            .Include(u => u.BusinessProfiles)
             .FirstOrDefaultAsync(u => u.Id == userId);
     }
 

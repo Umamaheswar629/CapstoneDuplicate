@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Common;
+using Application.DTOs.Common;
 using Application.DTOs.Insurance;
 using Application.Interfaces;
 using Domain.Entities;
@@ -14,9 +14,15 @@ public class BusinessProfileService : IBusinessProfileService
         _repo = repo;
     }
 
-    public async Task<ApiResponse<BusinessProfileDto>> GetByUserIdAsync(int userId)
+    public async Task<ApiResponse<IEnumerable<BusinessProfileDto>>> GetAllByUserIdAsync(int userId)
     {
-        var profile = await _repo.GetByUserIdAsync(userId);
+        var profiles = await _repo.GetAllByUserIdAsync(userId);
+        return ApiResponse<IEnumerable<BusinessProfileDto>>.SuccessResponse(profiles.Select(MapToDto));
+    }
+
+    public async Task<ApiResponse<BusinessProfileDto>> GetByIdAsync(int id, int userId)
+    {
+        var profile = await _repo.GetByIdAsync(id, userId);
         if (profile == null)
             return ApiResponse<BusinessProfileDto>.FailResponse("Business profile not found.");
 
@@ -25,9 +31,6 @@ public class BusinessProfileService : IBusinessProfileService
 
     public async Task<ApiResponse<BusinessProfileDto>> CreateAsync(int userId, CreateBusinessProfileRequest request)
     {
-        if (await _repo.ExistsByUserIdAsync(userId))
-            return ApiResponse<BusinessProfileDto>.FailResponse("Business profile already exists.");
-
         var profile = new BusinessProfile
         {   
             UserId = userId,
@@ -48,9 +51,9 @@ public class BusinessProfileService : IBusinessProfileService
         return ApiResponse<BusinessProfileDto>.SuccessResponse(MapToDto(profile), "Profile created.");
     }
 
-    public async Task<ApiResponse<BusinessProfileDto>> UpdateAsync(int userId, UpdateBusinessProfileRequest request)
+    public async Task<ApiResponse<BusinessProfileDto>> UpdateAsync(int id, int userId, UpdateBusinessProfileRequest request)
     {
-        var profile = await _repo.GetByUserIdAsync(userId);
+        var profile = await _repo.GetByIdAsync(id, userId);
         if (profile == null)
             return ApiResponse<BusinessProfileDto>.FailResponse("Business profile not found.");
 

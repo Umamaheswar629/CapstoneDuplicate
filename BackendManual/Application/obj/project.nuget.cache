@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LXCB/v/cQ64=",
+  "dgSpecHash": "jZumAIhsKsk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Application.csproj",
+  "projectFilePath": "c:\\Users\\umama\\OneDrive\\Desktop\\CapstonePersonal\\BackendManual\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\umama\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\umama\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",

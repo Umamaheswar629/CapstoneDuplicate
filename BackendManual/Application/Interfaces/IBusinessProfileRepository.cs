@@ -1,11 +1,11 @@
-﻿using Domain.Entities;
+using Domain.Entities;
 
 namespace Application.Interfaces;
 
 public interface IBusinessProfileRepository
 {
-    Task<BusinessProfile?> GetByUserIdAsync(int userId);
-    Task<bool> ExistsByUserIdAsync(int userId);
+    Task<IEnumerable<BusinessProfile>> GetAllByUserIdAsync(int userId);
+    Task<BusinessProfile?> GetByIdAsync(int id, int userId);
     Task AddAsync(BusinessProfile profile);
     Task SaveChangesAsync();
 }

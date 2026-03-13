@@ -23,6 +23,7 @@ export class QuotesComponent implements OnInit {
   private profileService = inject(BusinessProfileService);
 
   myProfileId = signal<number | string | null>(null);
+  myProfiles = signal<any[]>([]);
 
   insuranceTypes = signal<InsuranceTypeDto[]>([]);
   selectedTypeId = signal<number | null>(null);
@@ -60,10 +61,12 @@ export class QuotesComponent implements OnInit {
   ngOnInit() {
     this.loadTypes();
     this.loadMyQuotes();
-    this.profileService.getMyProfile().subscribe((res: any) => {
+    this.profileService.getMyProfiles().subscribe((res: any) => {
       if (res.success && res.data) {
-        // assume the model has id or businessProfileId
-        this.myProfileId.set(res.data.id || (res.data as any).businessProfileId);
+        this.myProfiles.set(res.data);
+        if (res.data.length > 0) {
+          this.myProfileId.set(res.data[0].id || res.data[0].businessProfileId);
+        }
       }
     });
   }
@@ -142,7 +145,8 @@ export class QuotesComponent implements OnInit {
         if (res.success) {
           this.showPolicyModal.set(false);
           this.generatedQuote.set(null);
-          this.successMsg.set('Policy created successfully! Check your Policies tab.');
+          const agentPart = res.data?.agentName ? ` (Assigned Agent: ${res.data.agentName})` : '';
+          this.successMsg.set(`Policy created successfully${agentPart}! Check your Policies tab.`);
           this.loadMyQuotes(); // reflect 'Converted' status
         } else {
           this.errorMsg.set(res.message || 'Error converting policy');

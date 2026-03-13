@@ -1,0 +1,35 @@
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m  [2m | [22m[1mNames[22m                      [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-L4OKIJP3.js[39m    [2m | [22m[2m-[22m                          [2m | [22m[36m203.38 kB[39m[2m | [22m               [36m58.48 kB[39m
+[32mstyles-NAGG5GM2.css[39m  [2m | [22m[2mstyles[22m                     [2m | [22m[36m113.25 kB[39m[2m | [22m               [36m11.69 kB[39m
+[32mchunk-OJI4WLEE.js[39m    [2m | [22m[2m-[22m                          [2m | [22m [36m83.63 kB[39m[2m | [22m               [36m20.64 kB[39m
+[32mpolyfills-DOYHMSTV.js[39m[2m | [22m[2mpolyfills[22m                  [2m | [22m [36m35.73 kB[39m[2m | [22m               [36m11.58 kB[39m
+[32mchunk-ZSILZFIU.js[39m    [2m | [22m[2m-[22m                          [2m | [22m [36m11.78 kB[39m[2m | [22m                [36m3.74 kB[39m
+[32mmain-DDRBWPVW.js[39m     [2m | [22m[2mmain[22m                       [2m | [22m  [36m4.66 kB[39m[2m | [22m                [36m1.32 kB[39m
+[32mchunk-7JRGBKNK.js[39m    [2m | [22m[2m-[22m                          [2m | [22m  [36m2.21 kB[39m[2m | [22m              [36m777 bytes[39m
+
+[1m [22m                    [2m | [22m[1mInitial total[22m              [2m | [22m[1m454.64 kB[22m[2m | [22m              [1m108.23 kB[22m
+
+[1mLazy chunk files[22m     [2m | [22m[1mNames[22m                      [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-6ZHYG2WV.js[39m    [2m | [22m[2madmin-dashboard-component[22m  [2m | [22m[36m213.78 kB[39m[2m | [22m               [36m63.74 kB[39m
+[32mchunk-3Z4ZDMMA.js[39m    [2m | [22m[2m-[22m                          [2m | [22m [36m38.27 kB[39m[2m | [22m                [36m8.03 kB[39m
+[32mchunk-SB6JDJVT.js[39m    [2m | [22m[2mlanding-component[22m          [2m | [22m [36m29.73 kB[39m[2m | [22m                [36m6.51 kB[39m
+[32mchunk-YD7G3O2W.js[39m    [2m | [22m[2mclaims-component[22m           [2m | [22m [36m27.97 kB[39m[2m | [22m                [36m6.80 kB[39m
+[32mchunk-HVOKFNWX.js[39m    [2m | [22m[2mbusiness-profile-component[22m [2m | [22m [36m25.43 kB[39m[2m | [22m                [36m5.85 kB[39m
+[32mchunk-DLHEPABR.js[39m    [2m | [22m[2mclaims-component[22m           [2m | [22m [36m24.58 kB[39m[2m | [22m                [36m6.06 kB[39m
+[32mchunk-2ELEBAN5.js[39m    [2m | [22m[2mpolicies-component[22m         [2m | [22m [36m24.42 kB[39m[2m | [22m                [36m5.91 kB[39m
+[32mchunk-ZBDHV7WM.js[39m    [2m | [22m[2mbilling-component[22m          [2m | [22m [36m21.22 kB[39m[2m | [22m                [36m5.46 kB[39m
+[32mchunk-ELFIKNOP.js[39m    [2m | [22m[2mquotes-component[22m           [2m | [22m [36m18.15 kB[39m[2m | [22m                [36m4.73 kB[39m
+[32mchunk-RN7EH6R2.js[39m    [2m | [22m[2musers-component[22m            [2m | [22m [36m16.78 kB[39m[2m | [22m                [36m4.45 kB[39m
+[32mchunk-LDPF2BX7.js[39m    [2m | [22m[2minsurance-component[22m        [2m | [22m [36m16.08 kB[39m[2m | [22m                [36m3.93 kB[39m
+[32mchunk-2DQVCWYA.js[39m    [2m | [22m[2magent-policies-component[22m   [2m | [22m [36m15.92 kB[39m[2m | [22m                [36m4.19 kB[39m
+[32mchunk-VXHU33D3.js[39m    [2m | [22m[2mlogin-component[22m            [2m | [22m [36m12.04 kB[39m[2m | [22m                [36m3.52 kB[39m
+[32mchunk-KDKEQKAO.js[39m    [2m | [22m[2magent-dashboard-component[22m  [2m | [22m [36m11.31 kB[39m[2m | [22m                [36m3.49 kB[39m
+[32mchunk-I2JL4WG3.js[39m    [2m | [22m[2mofficer-dashboard-component[22m[2m | [22m [36m11.07 kB[39m[2m | [22m                [36m3.40 kB[39m
+[2m...and 23 more lazy chunks files. Use "--verbose" to show all the files.[22m
+
+Application bundle generation complete. [3.886 seconds] - 2026-03-13T04:52:34.117Z
+
+Output location: C:\Users\umama\OneDrive\Desktop\CapstonePersonal\FrontEndCipms\first-app\dist\first-app
+

@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Policy;
+namespace Application.DTOs.Policy;
 
 public class PolicyDto
 {
@@ -10,6 +10,7 @@ public class PolicyDto
     public string CustomerEmail { get; set; } = string.Empty;
     public int? AgentId { get; set; }
     public string? AgentName { get; set; }
+    public string? AgentEmail { get; set; }
     public string InsuranceTypeName { get; set; } = string.Empty;
     public string PlanName { get; set; } = string.Empty;
     public string TierName { get; set; } = string.Empty;
